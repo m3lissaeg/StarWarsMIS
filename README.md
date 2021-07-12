@@ -1,24 +1,55 @@
-# README
+# Star Wars MIS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+git clone git@github.com:m3lissaeg/StarWarsMIS.git
+cd StarWarsMIS
+```
 
-* Configuration
+### Check your Ruby version
 
-* Database creation
+```shell
+ruby -v
+```
 
-* Database initialization
+The ouput should start with something like `ruby 2.6.3`
 
-* How to run the test suite
+If not, install the right ruby version using rvm or [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+rbenv install 2.6.3
+```
 
-* Deployment instructions
+### Install dependencies
 
-* ...
+Using [Bundler](https://github.com/bundler/bundler) 
+
+```shell
+bundle install
+```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+### Run tests
+
+Finally, run the test suite to verify that everything is working correctly:
+
+```shell
+$ rails test
+```
+
+If the test suite passes, you’ll be ready to seed the database with sample users and run the app in a local server:
+
+## Serve
+
+```shell
+rails s
+```
+And now you can visit the site with the URL http://localhost:3000
