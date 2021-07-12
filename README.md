@@ -9,6 +9,14 @@
 git clone git@github.com:m3lissaeg/StarWarsMIS.git
 cd StarWarsMIS
 ```
+### Ruby, Rails and Postgres version
+
+```shell
+ruby:         2.6.3
+rails:        6.1.3
+postgres gem: pg 1.2
+```
+Check out the Gemfile to know about other gems used in this project.
 
 ### Check your Ruby version
 
@@ -33,9 +41,10 @@ bundle install
 ```
 
 ### Initialize the database
+To create the database, load the schema, and initialize it with the seed data:
 
 ```shell
-rails db:create db:migrate db:seed
+rails db:setup
 ```
 ### Run tests
 
