@@ -12,9 +12,9 @@ cd StarWarsMIS
 ### Ruby, Rails and Postgres version
 
 ```shell
-ruby:         2.6.3
-rails:        6.1.3
-postgres gem: pg 1.2
+ruby:       2.6.3
+rails:      6.1.3
+PostgreSQL: 13.3 
 ```
 Check out the Gemfile to know about other gems used in this project.
 
