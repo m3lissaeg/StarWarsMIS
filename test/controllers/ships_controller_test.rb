@@ -35,6 +35,11 @@ class ShipsControllerTest < ActionDispatch::IntegrationTest
     assert_not @ship.valid?
   end
   
+  test "name should not be too long" do
+    @ship.name = "a" * 51
+    assert_not @ship.valid?
+  end
+  
   test "should show ship" do
     get ship_url(@ship)
     assert_response :success
