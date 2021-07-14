@@ -41,6 +41,16 @@ class DroidsControllerTest < ActionDispatch::IntegrationTest
     @droid.model = ""
     assert_not @droid.valid?
   end
+
+  test "name should not be too long" do
+    @droid.name = "a" * 51
+    assert_not @droid.valid?
+  end
+
+  test "model should not be too long" do
+    @droid.model = "a" * 51
+    assert_not @droid.valid?
+  end
   
   test "should show droid" do
     get droid_url(@droid)
