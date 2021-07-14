@@ -23,6 +23,34 @@ class LocationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to location_url(Location.last)
   end
 
+  test "should validate presence of system and coord" do
+    @location.system = ""
+    @location.coord = ""
+    assert_no_difference('Location.count') do
+      post locations_url, params: { location: { coord: @location.coord, system: @location.system } }
+    end
+  end
+  
+  test "system should be present" do
+    @location.system = ""
+    assert_not @location.valid?
+  end
+
+  test "coord should be present" do
+    @location.coord = ""
+    assert_not @location.valid?
+  end
+
+  test "system should not be too long" do
+    @location.system = "a" * 51
+    assert_not @location.valid?
+  end
+
+  test "coord should not be too long" do
+    @location.coord = "a" * 51
+    assert_not @location.valid?
+  end
+  
   test "should show location" do
     get location_url(@location)
     assert_response :success
