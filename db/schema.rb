@@ -23,18 +23,4 @@ ActiveRecord::Schema.define(version: 2021_07_13_200610) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "system"
-    t.string "coord"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ships", force: :cascade do |t|
-    t.string "name"
-    t.text "features"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
 end
