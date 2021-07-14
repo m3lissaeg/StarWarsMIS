@@ -23,6 +23,18 @@ class ShipsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to ship_url(Ship.last)
   end
 
+  test "should validate presence of name" do
+    @ship.name = ""
+    assert_no_difference('Ship.count') do
+      post ships_url, params: { ship: { features: @ship.features, name: @ship.name } }
+    end
+  end
+  
+  test "name should be present" do
+    @ship.name = ""
+    assert_not @ship.valid?
+  end
+  
   test "should show ship" do
     get ship_url(@ship)
     assert_response :success
