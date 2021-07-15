@@ -2,7 +2,7 @@ require "test_helper"
 
 class ShipsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @ship = ships(:one)
+    @ship = ships(:falcon)
   end
 
   test "should get index" do
@@ -29,17 +29,7 @@ class ShipsControllerTest < ActionDispatch::IntegrationTest
       post ships_url, params: { ship: { features: @ship.features, name: @ship.name } }
     end
   end
-  
-  test "name should be present" do
-    @ship.name = ""
-    assert_not @ship.valid?
-  end
-  
-  test "name should not be too long" do
-    @ship.name = "a" * 51
-    assert_not @ship.valid?
-  end
-  
+    
   test "should show ship" do
     get ship_url(@ship)
     assert_response :success
