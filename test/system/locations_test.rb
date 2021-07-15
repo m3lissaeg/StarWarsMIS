@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class LocationsTest < ApplicationSystemTestCase
   setup do
-    @location = locations(:one)
+    @location = locations(:deathstar)
   end
 
   test "visiting the index" do
@@ -30,9 +30,12 @@ class LocationsTest < ApplicationSystemTestCase
     visit locations_url
     click_on "Edit", match: :first
 
-    fill_in "Coord", with: @location.coord
-    fill_in "System", with: @location.system
+    fill_in "Coord", with: "@location.coord"
+    fill_in "System", with: "@location.system"
     click_on "Update Location"
+
+    assert_equal "@location.system", Location.first.system
+    assert_equal "@location.coord", Location.first.coord
 
     assert_text "Location was successfully updated"
     click_on "Back"

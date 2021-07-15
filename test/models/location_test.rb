@@ -2,7 +2,7 @@ require "test_helper"
 
 class LocationTest < ActiveSupport::TestCase
   setup do
-    @location = locations(:one)
+    @location = locations(:deathstar)
   end
   
   test "system should be present" do
