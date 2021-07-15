@@ -1,0 +1,51 @@
+name: Rails
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        ruby-version: ['2.6', '2.7', '3.0']
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:13.3
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+    - name: Install Yarn dependencies
+      run: yarn --frozen-lockfile
+    - name: Setup DB
+      run: bundle exec rails db:setup
+    - name: Run tests
+      run: bundle exec rails test:all
