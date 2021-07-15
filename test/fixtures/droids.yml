@@ -1,11 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  model: MyString
-  features: MyText
+C3PO:
+  name: C-3PO
+  model: C-3PO v1
+  features: His crewmates might be tempted to shut him up or shut him down 
+            from time to time, but Threepio’s protocol and translation 
+            skills come in handy more than some people may care to admit.
 
-two:
-  name: MyString
-  model: MyString
-  features: MyText
+R2D2:
+  name: R2-D2
+  model: R2-D2 v1
+  features: The most famous astromech droid. R2-D2’s memory bank holds 
+            countless tales of heroics and tragedy from the Clone Wars, 
+            the Rebellion, and the Resistance.  R2-D2 is always there 
+            for his masters when they need a holo transmission, a map, 
+            or a lightsaber.
