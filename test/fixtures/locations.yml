@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  system: MyString
-  coord: MyString
+  system: Death Star
+  coord: -340.11, -79.72, 1.06
 
 two:
-  system: MyString
-  coord: MyString
+  system: Batuu
+  coord: -401.72, -561.84, 004.32

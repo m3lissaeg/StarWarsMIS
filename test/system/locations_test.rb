@@ -17,9 +17,13 @@ class LocationsTest < ApplicationSystemTestCase
     fill_in "Coord", with: @location.coord
     fill_in "System", with: @location.system
     click_on "Create Location"
+    # Info filled and saved by the user should be equal to what is stored in DB
+    assert_equal @location.system, Location.last.system
+    assert_equal @location.coord, Location.last.coord
 
     assert_text "Location was successfully created"
     click_on "Back"
+
   end
 
   test "updating a Location" do
