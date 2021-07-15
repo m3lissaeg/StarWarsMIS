@@ -34,10 +34,15 @@ rbenv install 2.6.3
 
 ### Install dependencies
 
-Using [Bundler](https://github.com/bundler/bundler) 
+Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
+
 
 ```shell
 bundle install
+```
+
+```shell
+yarn install
 ```
 
 ### Initialize the database
@@ -51,7 +56,7 @@ rails db:setup
 Finally, run the test suite to verify that everything is working correctly:
 
 ```shell
-$ rails test
+rails test
 ```
 
 If the test suite passes, you’ll be ready to seed the database with sample users and run the app in a local server:
