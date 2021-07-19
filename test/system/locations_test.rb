@@ -22,6 +22,8 @@ class LocationsTest < ApplicationSystemTestCase
     assert_equal @location.coord, Location.last.coord
 
     assert_text "Location was successfully created"
+    assert_text @location.system
+    assert_text @location.coord
     click_on "Back"
 
   end
@@ -29,13 +31,13 @@ class LocationsTest < ApplicationSystemTestCase
   test "updating a Location" do
     visit locations_url
     click_on "Edit", match: :first
-
-    fill_in "Coord", with: "@location.coord"
-    fill_in "System", with: "@location.system"
+    # byebug
+    fill_in "Coord", with: "New coord"
+    fill_in "System", with: "New system"
     click_on "Update Location"
 
-    assert_equal "@location.system", Location.first.system
-    assert_equal "@location.coord", Location.first.coord
+    assert_equal "New system", Location.order('id ASC').first.system
+    assert_equal "New coord", Location.order('id ASC').first.coord
 
     assert_text "Location was successfully updated"
     click_on "Back"
