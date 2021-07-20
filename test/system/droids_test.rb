@@ -25,13 +25,16 @@ class DroidsTest < ApplicationSystemTestCase
     assert_equal @droid.name, Droid.last.name
     
     assert_text "Droid was successfully created"
+    assert_text @droid.features
+    assert_text @droid.model
+    assert_text @droid.name
     click_on "Back"
   end
   
   test "updating a Droid" do
     visit droids_url
     click_on "Edit", match: :first
-    
+    byebug
     fill_in "Features", with: @droid.features
     fill_in "Model", with: @droid.model
     fill_in "Name", with: @droid.name

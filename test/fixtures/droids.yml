@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 C3PO:
+  id: 1
   name: C-3PO
   model: C-3PO v1
   features: His crewmates might be tempted to shut him up or shut him down 
@@ -8,6 +9,7 @@ C3PO:
             skills come in handy more than some people may care to admit.
 
 R2D2:
+  id: 2
   name: R2-D2
   model: R2-D2 v1
   features: The most famous astromech droid. R2-D2’s memory bank holds 
