@@ -1,12 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 falcon:
+  id: 1
   name: Millenium Falcon
-  features: 115 feet, or 35 meters long. Swagger, longevity 
-            -- and evasive-maneuvering capability. 
-            Though many have tried, Han's modified ride can't be caught. 
-            The Falcon is one of the fastest ships ever.
+  features: 115 feet, or 35 meters long. Swagger, longevity and evasive-maneuvering capability.Though many have tried, Han's modified ride can't be caught. The Falcon is one of the fastest ships ever.
 
 x-wing:
+  id: 2
   name: X-wing fighter
   features: 41-foot, 12.5-meter long. Has proton torpedoes.

@@ -23,19 +23,21 @@ class ShipsTest < ApplicationSystemTestCase
     assert_equal @ship.features, Ship.last.features
     
     assert_text "Ship was successfully created"
+    assert_text @ship.name
+    assert_text @ship.features
     click_on "Back"
   end
   
   test "updating a Ship" do
     visit ships_url
     click_on "Edit", match: :first
-    
-    fill_in "Features", with: @ship.features
-    fill_in "Name", with: @ship.name
+    byebug
+    fill_in "Features", with: "New Features"
+    fill_in "Name", with: "New Name"
     click_on "Update Ship"
     # Not working yet :(
-    # assert_equal @ship.name, Ship.first.name
-    # assert_equal @ship.features, Ship.first.features
+    assert_equal "New Name", Ship.first.name
+    assert_equal "New Features", Ship.first.features
     
     assert_text "Ship was successfully updated"
     click_on "Back"
