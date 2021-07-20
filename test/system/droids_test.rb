@@ -34,7 +34,7 @@ class DroidsTest < ApplicationSystemTestCase
   test "updating a Droid" do
     visit droids_url
     click_on "Edit", match: :first
-    byebug
+    # byebug
     fill_in "Features", with: @droid.features
     fill_in "Model", with: @droid.model
     fill_in "Name", with: @droid.name
