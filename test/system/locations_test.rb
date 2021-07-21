@@ -31,7 +31,6 @@ class LocationsTest < ApplicationSystemTestCase
   test "updating a Location" do
     visit locations_url
     click_on "Edit", match: :first
-    # byebug
     fill_in "Coord", with: "New coord"
     fill_in "System", with: "New system"
     click_on "Update Location"
