@@ -43,7 +43,7 @@ class DroidsControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should update droid" do
-    patch droid_url(@droid), params: { droid: { features: @droid.features, model: @droid.model, name: @droid.name } }
+    patch droid_url(@droid), params: { droid: { features: "New features", model: "New model", name: "New name" }  }
     assert_redirected_to droid_url(@droid)
   end
   
