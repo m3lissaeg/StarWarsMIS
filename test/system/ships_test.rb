@@ -31,11 +31,9 @@ class ShipsTest < ApplicationSystemTestCase
   test "updating a Ship" do
     visit ships_url
     click_on "Edit", match: :first
-    # byebug
     fill_in "Features", with: "New Features"
     fill_in "Name", with: "New Name"
     click_on "Update Ship"
-    # Not working yet :(
     assert_equal "New Name", Ship.first.name
     assert_equal "New Features", Ship.first.features
     

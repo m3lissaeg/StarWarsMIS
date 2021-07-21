@@ -41,7 +41,7 @@ class ShipsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update ship" do
-    patch ship_url(@ship), params: { ship: { features: @ship.features, name: @ship.name } }
+    patch ship_url(@ship), params: { ship: { features: "New features", name: "New name" } }
     assert_redirected_to ship_url(@ship)
   end
 
