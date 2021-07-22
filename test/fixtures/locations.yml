@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+deathstar:
+  id: 1
+  system: Death Star
+  coord: -340.11, -79.72, 1.06
+
+batuu:
+  id: 2
+  system: Batuu
+  coord: -401.72, -561.84, 004.32
