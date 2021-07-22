@@ -34,14 +34,14 @@ class DroidsTest < ApplicationSystemTestCase
   test "updating a Droid" do
     visit droids_url
     click_on "Edit", match: :first
-    fill_in "Features", with: @droid.features
-    fill_in "Model", with: @droid.model
-    fill_in "Name", with: @droid.name
+    fill_in "Features", with: "New features"
+    fill_in "Model", with: "New model"
+    fill_in "Name", with: "New name"
     click_on "Update Droid"
 
-    assert_equal @droid.features, Droid.first.features
-    assert_equal @droid.model, Droid.first.model
-    assert_equal @droid.name, Droid.first.name
+    assert_equal "New features", Droid.first.features
+    assert_equal "New model", Droid.first.model
+    assert_equal "New name", Droid.first.name
     
     assert_text "Droid was successfully updated"
     click_on "Back"
