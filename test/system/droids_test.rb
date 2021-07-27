@@ -39,9 +39,9 @@ class DroidsTest < ApplicationSystemTestCase
     fill_in "Name", with: "New name"
     click_on "Update Droid"
 
-    assert_equal @droid.features, Droid.order('id ASC').first.features
-    assert_equal @droid.model, Droid.order('id ASC').first.model
-    assert_equal @droid.name, Droid.order('id ASC').first.name
+    assert_equal "New features", Droid.order('id ASC').first.features
+    assert_equal "New model", Droid.order('id ASC').first.model
+    assert_equal "New name", Droid.order('id ASC').first.name
     
     assert_text "Droid was successfully updated"
     click_on "Back"
