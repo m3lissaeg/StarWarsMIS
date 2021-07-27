@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @droid.name %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @droid.model %>
+</p>
+
+<p>
+  <strong>Features:</strong>
+  <%= @droid.features %>
+</p>
+
+<%= link_to 'Edit', edit_droid_path(@droid) %> |
+<%= link_to 'Back', droids_path %>
