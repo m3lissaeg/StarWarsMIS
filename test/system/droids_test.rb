@@ -34,9 +34,9 @@ class DroidsTest < ApplicationSystemTestCase
   test "updating a Droid" do
     visit droids_url
     click_on "Edit", match: :first
-    fill_in "Features", with: @droid.features
-    fill_in "Model", with: @droid.model
-    fill_in "Name", with: @droid.name
+    fill_in "Features", with: "New features"
+    fill_in "Model", with: "New model"
+    fill_in "Name", with: "New name"
     click_on "Update Droid"
 
     assert_equal @droid.features, Droid.order('id ASC').first.features
