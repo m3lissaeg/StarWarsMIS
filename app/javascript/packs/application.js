@@ -12,4 +12,8 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import '../js/site.js'
+
 import 'scss/site.scss'
+import 'css/style.css'
+import 'css/theme.min.css'
+

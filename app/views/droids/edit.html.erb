@@ -1,6 +1,15 @@
-<h1>Editing Droid</h1>
+<div class="col-lg-12 mb-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold text-primary">Editing Droid</h6>
+        </div>
 
-<%= render 'form', droid: @droid %>
+        <div class="card-body">        
+            <%= render 'form', droid: @droid %>
+            
+            <%= link_to 'Show', @droid %> |
+            <%= link_to 'Back', droids_path %>
+        </div>
 
-<%= link_to 'Show', @droid %> |
-<%= link_to 'Back', droids_path %>
+    </div>
+</div>
