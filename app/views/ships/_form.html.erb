@@ -1,24 +1,28 @@
-<%= form_with(model: ship) do |form| %>
-  <% if ship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ship.errors.count, "error") %> prohibited this ship from being saved:</h2>
+<% if ship.errors.any? %>
+  <div class="card mb-4 py-3 border-left-danger">
+    <div class="card-body">
+      <h5><%= pluralize(ship.errors.count, "error") %> prohibited this ship from being saved:</h5>
 
       <ul>
         <% ship.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
+    </div>  
+  </div>  
+<% end %>
+
+
+<%= form_with(model: ship) do |form| %>
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name , class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :features %>
-    <%= form.text_area :features %>
+    <%= form.text_area :features , class: 'form-control' %>
   </div>
 
   <div class="actions">

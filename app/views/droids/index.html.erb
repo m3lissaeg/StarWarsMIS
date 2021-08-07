@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <div class="col-lg-12 mb-4">
+
+  <% if !notice.blank? %>
+  <div class="card mb-4 py-3 border-left-primary">
+    <div class="card-body">
+      <%= notice %> 
+    </div>
+  </div>
+  <% end %>
+
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h3 class="m-0 font-weight-bold text-primary">Droids</h6>
+      <h3 class="m-0 font-weight-bold text-primary">Droids</h3>
     </div>
     
     <div class="card-body">   
@@ -35,10 +42,10 @@
         </table>
       </div>
     
-    <br>
+      <br>
     
-    <%= link_to 'New Droid', new_droid_path %>
-  </div>
+      <%= link_to 'New Droid', new_droid_path %>
+    </div>
     
 
   </div>

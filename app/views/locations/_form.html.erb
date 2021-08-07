@@ -1,7 +1,7 @@
-<%= form_with(model: location) do |form| %>
-  <% if location.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+<% if location.errors.any? %>
+  <div class="card mb-4 py-3 border-left-danger">
+    <div class="card-body">
+      <h5><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h5>
 
       <ul>
         <% location.errors.each do |error| %>
@@ -9,16 +9,20 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
+  </div>
+<% end %>
+
+
+<%= form_with(model: location) do |form| %>
 
   <div class="field">
     <%= form.label :system %>
-    <%= form.text_field :system %>
+    <%= form.text_field :system , class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :coord %>
-    <%= form.text_field :coord %>
+    <%= form.text_field :coord , class: 'form-control' %>
   </div>
 
   <div class="actions">
