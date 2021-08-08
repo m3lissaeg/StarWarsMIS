@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/notice' %>
 
-<p>
-  <strong>System:</strong>
-  <%= @location.system %>
-</p>
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Location</h3>
+    </div>
 
-<p>
-  <strong>Coord:</strong>
-  <%= @location.coord %>
-</p>
+    <div class="card-body">   
+      <p>
+        <strong>System:</strong>
+        <%= @location.system %>
+      </p>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+      <p>
+        <strong>Coord:</strong>
+        <%= @location.coord %>
+      </p>
+
+      <%= link_to 'Edit', edit_location_path(@location) %> |
+      <%= link_to 'Back', locations_path %>
+
+    </div>
+  </div>
+</div>
+

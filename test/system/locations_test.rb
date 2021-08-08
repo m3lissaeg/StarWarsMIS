@@ -7,7 +7,7 @@ class LocationsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit locations_url
-    assert_selector "h1", text: "Locations"
+    assert_selector "h3", text: "Locations"
   end
 
   test "creating a Location" do

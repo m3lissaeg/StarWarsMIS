@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/notice' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ship.name %>
-</p>
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Ship</h3>
+    </div>
 
-<p>
-  <strong>Features:</strong>
-  <%= @ship.features %>
-</p>
+    <div class="card-body">   
 
-<%= link_to 'Edit', edit_ship_path(@ship) %> |
-<%= link_to 'Back', ships_path %>
+      <p>
+        <strong>Name:</strong>
+        <%= @ship.name %>
+      </p>
+
+      <p>
+        <strong>Features:</strong>
+        <%= @ship.features %>
+      </p>
+
+      <%= link_to 'Edit', edit_ship_path(@ship) %> |
+      <%= link_to 'Back', ships_path %>
+
+    </div>
+  </div>
+</div>
+

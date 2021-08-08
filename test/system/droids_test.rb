@@ -7,7 +7,7 @@ class DroidsTest < ApplicationSystemTestCase
   
   test "visiting the index" do
     visit droids_url
-    assert_selector "h1", text: "Droids"
+    assert_selector "h3", text: "Droids"
   end
   
   test "creating a Droid" do

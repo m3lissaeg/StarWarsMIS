@@ -1,31 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="col-lg-12 mb-4">
 
-<h1>Droids</h1>
+  <%= render 'layouts/notice' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Model</th>
-      <th>Features</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Droids</h3>
+    </div>
+    
+    <div class="card-body">   
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Name   </th>
+              <th>Model   </th>
+              <th>Features   </th>
+              <th>Actions </th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @droids.each do |droid| %>
-      <tr>
-        <td><%= droid.name %></td>
-        <td><%= droid.model %></td>
-        <td><%= droid.features %></td>
-        <td><%= link_to 'Show', droid %></td>
-        <td><%= link_to 'Edit', edit_droid_path(droid) %></td>
-        <td><%= link_to 'Destroy', droid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @droids.each do |droid| %>
+              <tr>
+                <td><%= droid.name %></td>
+                <td><%= droid.model %></td>
+                <td><%= droid.features %></td>
+                <td>
+                    <%= link_to 'Show', droid %> <span>  |  </span>
+                    <%= link_to 'Edit', edit_droid_path(droid) %>  <span>  |  </span>
+                    <%= link_to 'Destroy', droid, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    
+      <br>
+    
+      <%= link_to 'New Droid', new_droid_path %>
+    </div>
+    
 
-<br>
-
-<%= link_to 'New Droid', new_droid_path %>
+  </div>
+</div>
