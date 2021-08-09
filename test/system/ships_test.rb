@@ -34,8 +34,8 @@ class ShipsTest < ApplicationSystemTestCase
     fill_in "Features", with: "New Features"
     fill_in "Name", with: "New Name"
     click_on "Update Ship"
-    assert_equal "New Name", Ship.first.name
-    assert_equal "New Features", Ship.first.features
+    assert_equal "New Name", Ship.order('id ASC').first.name
+    assert_equal "New Features", Ship.order('id ASC').first.features
     
     assert_text "Ship was successfully updated"
     click_on "Back"
