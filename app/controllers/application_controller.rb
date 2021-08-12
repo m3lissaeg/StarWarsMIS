@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def layout_by_resource
-    if devise_controller? && action_name == "new"
+    if devise_controller? && action_name == "new" || "show"
       "public"
     else
       "application"
