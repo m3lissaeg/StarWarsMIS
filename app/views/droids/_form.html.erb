@@ -1,5 +1,5 @@
 <% if droid.errors.any? %>
-<div class="card mb-4 py-3 border-left-danger">
+<div class="alert alert-danger" role="alert">
   <div class="card-body">
     <h5><%= pluralize(droid.errors.count, "error") %> prohibited this droid from being saved:</h5>
 
@@ -27,8 +27,8 @@
     <%= form.label :features %>
     <%= form.text_area :features , class: 'form-control' %>
   </div>
-
+  </br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Submit" , class: 'btn btn-primary' %>
   </div>
 <% end %>
