@@ -16,7 +16,7 @@ class ShipsTest < ApplicationSystemTestCase
     
     fill_in "Features", with: @ship.features
     fill_in "Name", with: @ship.name
-    click_on "Create Ship"
+    click_on "Submit"
     
     # Info filled and saved by the user should be equal to what is stored in DB
     assert_equal @ship.name, Ship.last.name
@@ -33,7 +33,7 @@ class ShipsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
     fill_in "Features", with: "New Features"
     fill_in "Name", with: "New Name"
-    click_on "Update Ship"
+    click_on "Submit"
     assert_equal "New Name", Ship.order('id ASC').first.name
     assert_equal "New Features", Ship.order('id ASC').first.features
     
