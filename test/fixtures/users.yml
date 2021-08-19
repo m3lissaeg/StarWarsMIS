@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+rey:
+  id: 1
+  name: Rey Skywalker
+  email: reyskywalker@gmail.com
+  phone: 23456789
+  rank: master
+  jedi: true
+  admin: true
+
+luke:
+  id: 2
+  name: Luke Skywalker
+  email: lukeskywalker@gmail.com
+  phone: 12345678
+  rank: master  
+  jedi: true
+  admin: false

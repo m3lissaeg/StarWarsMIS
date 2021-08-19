@@ -4,3 +4,8 @@ td {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.bg-image{
+    background-image: url("../images/stars.jpg");
+    background-size: auto;
+}

@@ -17,3 +17,7 @@ import 'scss/site.scss'
 import 'css/style.css'
 import 'css/theme.min.css'
 
+// media
+const images = require.context('../images', true)
+const imagePath = name => images(name, true)
+import starsImg from '../images/stars.jpg'

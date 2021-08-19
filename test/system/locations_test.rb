@@ -16,7 +16,7 @@ class LocationsTest < ApplicationSystemTestCase
 
     fill_in "Coord", with: @location.coord
     fill_in "System", with: @location.system
-    click_on "Create Location"
+    click_on "Submit"
     # Info filled and saved by the user should be equal to what is stored in DB
     assert_equal @location.system, Location.last.system
     assert_equal @location.coord, Location.last.coord
@@ -33,7 +33,7 @@ class LocationsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
     fill_in "Coord", with: "New coord"
     fill_in "System", with: "New system"
-    click_on "Update Location"
+    click_on "Submit"
 
     assert_equal "New system", Location.order('id ASC').first.system
     assert_equal "New coord", Location.order('id ASC').first.coord

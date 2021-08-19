@@ -17,7 +17,7 @@ class DroidsTest < ApplicationSystemTestCase
     fill_in "Features", with: @droid.features
     fill_in "Model", with: @droid.model
     fill_in "Name", with: @droid.name
-    click_on "Create Droid"
+    click_on "Submit"
     
     # Info filled and saved by the user should be equal to what is stored in DB
     assert_equal @droid.features, Droid.last.features
@@ -37,7 +37,7 @@ class DroidsTest < ApplicationSystemTestCase
     fill_in "Features", with: "New features"
     fill_in "Model", with: "New model"
     fill_in "Name", with: "New name"
-    click_on "Update Droid"
+    click_on "Submit"
 
     assert_equal "New features", Droid.order('id ASC').first.features
     assert_equal "New model", Droid.order('id ASC').first.model
