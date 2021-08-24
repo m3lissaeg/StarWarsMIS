@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :phone,  presence: true, length: { maximum: 100 }
   validates :email,  presence: true
 
-  has_and_belongs_to_many :crews, join_table: :crews_rebels
+  has_and_belongs_to_many :crews_as_rebel, class_name: "Crew", join_table: :crews_rebels
+  has_and_belongs_to_many :crews_as_passenger, class_name: "Crew", join_table: :crews_passengers
 end
