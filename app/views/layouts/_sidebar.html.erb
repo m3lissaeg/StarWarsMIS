@@ -60,6 +60,19 @@
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <div>
+      <%= link_to "Crews", crews_path , class: 'nav-link collapsed'  %>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="#">Create</a>
+        <a class="collapse-item" href="#">List, Edit & Delete</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <div>
       <%= link_to "Ships", ships_path , class: 'nav-link collapsed'  %>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -69,6 +82,7 @@
       </div>
     </div>
   </li>
+
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
     <div>

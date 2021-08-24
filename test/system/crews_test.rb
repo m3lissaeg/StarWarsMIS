@@ -7,7 +7,7 @@ class CrewsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit crews_url
-    assert_selector "h1", text: "Crews"
+    assert_selector "h3", text: "Crews"
   end
 
   test "creating a Crew" do
@@ -15,7 +15,7 @@ class CrewsTest < ApplicationSystemTestCase
     click_on "New Crew"
 
     fill_in "Name", with: @crew.name
-    click_on "Create Crew"
+    click_on "Submit"
 
     assert_text "Crew was successfully created"
     click_on "Back"
@@ -26,7 +26,7 @@ class CrewsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: @crew.name
-    click_on "Update Crew"
+    click_on "Submit"
 
     assert_text "Crew was successfully updated"
     click_on "Back"
