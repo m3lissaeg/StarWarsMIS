@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class CrewsTest < ApplicationSystemTestCase
   setup do
-    @crew = crews(:one)
+    @crew = crews(:red5)
   end
 
   test "visiting the index" do

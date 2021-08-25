@@ -15,13 +15,72 @@
 
 
 <%= form_with(model: crew) do |form| %>
+  
+  <div class="container">
+    <div class="row">
+      <small class="form-text text-muted">
+        Use Ctrl and Shift to select multiple Droids, Rebels and Passengers for this Crew
+      </small>
+    </div>
+    </br>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name , class: 'form-control' %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name , class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit "Submit" , class: 'btn btn-primary' %>
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="ship">Select the ship for this Crew</label>
+          <%= form.collection_select :ship_id, Ship.order(:name), :id, :name, 
+              {include_blank: false}, {class: 'form-select form-select-sm'} %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="droid">Select Droids: </label>
+          <%= form.collection_select :droid_id, Droid.order(:name), :id, :name, {include_blank: false}, 
+            {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-check">
+        <label for="rebels">Select Rebels: </label>
+        <%= form.collection_select :rebel_ids, User.order(:name), :id, :name, {include_blank: false}, 
+          {class: 'form-select form-select-sm',size: '3',:multiple => true }  %>
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-check">
+        <label for="rebels">Select Passengers: </label>
+        <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
+        {class: 'form-select form-select-sm',size: '3', :multiple => true }  %>
+      
+      </div>
+    </div>
+    </br>
+
+    <div class="row">
+      <div class="col-2">
+        <div class="actions">
+          <%= form.submit "Submit" , class: 'btn btn-primary' %>
+        </div>
+
+        <%= link_to 'Back', crews_path %>
+      </div>
+      
+    </div>
+
   </div>
+  
 <% end %>

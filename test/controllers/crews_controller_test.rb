@@ -2,7 +2,7 @@ require "test_helper"
 
 class CrewsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @crew = crews(:one)
+    @crew = crews(:red5)
   end
 
   test "should get index" do

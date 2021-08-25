@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+red5:
+  id: 1
+  name: Red Five 
 
-two:
-  name: MyString
+spectres:
+  id: 2
+  name: Ghost team

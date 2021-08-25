@@ -5,8 +5,10 @@
     </div>  
     <div class="card-body">        
       <%= render 'form', crew: @crew %>
-      <%= link_to 'Show', @crew %> |
-      <%= link_to 'Back', crews_path %>
+      <div class="container">
+        <%= link_to 'Show', @crew %> 
+      </div> 
+       
     </div>  
   </div>
 </div>
