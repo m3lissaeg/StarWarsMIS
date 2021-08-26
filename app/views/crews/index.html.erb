@@ -8,11 +8,21 @@
     </div>
     
     <div class="card-body">   
+      <div class="container">
+        <div class="row">
+          <small class="form-text text-muted">
+            Click "Show" to see all details about Droids, Rebels and Passengers for this Crew
+          </small>
+        </div>
+      </div>
+      </br>
       <div class="table-responsive">
         <table class="table align-middle">
           <thead>
             <tr>
-              <th>Name   </th>
+              <th>Name    </th>
+              <th>Ship    </th>
+              <th>Droids  </th>
               <th>Actions </th>
             </tr>
           </thead>
@@ -21,6 +31,15 @@
             <% @crews.each do |crew| %>
               <tr>
                 <td><%= crew.name %></td>
+                <td>
+                  <%= crew.ships.map(&:name).join(', ') %>
+                </td>
+                
+                <td>
+                  <%= crew.droids.map(&:name).join(', ') %>
+                </td>
+
+
                 <td>
                     <%= link_to 'Show', crew %> <span>  |  </span>
                     <%= link_to 'Edit', edit_crew_path(crew) %> <span>  |  </span>
@@ -33,7 +52,8 @@
       </div>
     
       <br>
-    
+      
+
       <%= link_to 'New Crew', new_crew_path %>
     </div>
     

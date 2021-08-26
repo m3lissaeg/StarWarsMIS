@@ -25,6 +25,7 @@ class CrewsController < ApplicationController
 
     respond_to do |format|
       if @crew.save
+        # puts params.inspect
         format.html { redirect_to @crew, notice: "Crew was successfully created." }
         format.json { render :show, status: :created, location: @crew }
       else
@@ -64,6 +65,12 @@ class CrewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def crew_params
-      params.require(:crew).permit(:name)
+      params.require(:crew).permit(
+        :name,
+        :ship_ids,
+        droid_ids: [],
+        rebel_ids: [],
+        passenger_ids: []
+      )
     end
 end

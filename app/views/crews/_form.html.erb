@@ -36,7 +36,7 @@
       <div class="col">
         <div class="form-group">
           <label for="ship">Select the ship for this Crew</label>
-          <%= form.collection_select :ship_id, Ship.order(:name), :id, :name, 
+          <%= form.collection_select :ship_ids, Ship.order(:name), :id, :name, 
               {include_blank: false}, {class: 'form-select form-select-sm'} %>
         </div>
       </div>
@@ -44,7 +44,7 @@
       <div class="col">
         <div class="form-group">
           <label for="droid">Select Droids: </label>
-          <%= form.collection_select :droid_id, Droid.order(:name), :id, :name, {include_blank: false}, 
+          <%= form.collection_select :droid_ids, Droid.order(:name), :id, :name, {include_blank: false}, 
             {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
           
         </div>
@@ -64,7 +64,7 @@
       <div class="form-check">
         <label for="rebels">Select Passengers: </label>
         <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
-        {class: 'form-select form-select-sm',size: '3', :multiple => true }  %>
+          {class: 'form-select form-select-sm',size: '3', :multiple => true }  %>
       
       </div>
     </div>
