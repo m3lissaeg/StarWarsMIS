@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+jedi:
+  name: Jedi team
+  leader_id: 1
 
-two:
-  name: MyString
+hansquad:
+  name: The Han Solo Squad
+  leader_id: 1
