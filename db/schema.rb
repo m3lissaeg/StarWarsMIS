@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_051306) do
 
   create_table "squads", force: :cascade do |t|
     t.string "name"
-    t.bigint "leader_id", null: false
+    t.bigint "leader_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["leader_id"], name: "index_squads_on_leader_id"
