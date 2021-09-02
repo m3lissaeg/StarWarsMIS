@@ -64,6 +64,10 @@ class SquadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def squad_params
-      params.require(:squad).permit(:name)
+      params.require(:squad).permit(
+        :name,
+        :leader_id,
+        crew_ids: [],
+      )
     end
 end

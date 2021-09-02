@@ -1,9 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/notice' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @squad.name %>
-</p>
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">squad</h3>
+    </div>
 
-<%= link_to 'Edit', edit_squad_path(@squad) %> |
-<%= link_to 'Back', squads_path %>
+    <div class="card-body">  
+      <div class="container">
+        <div class="row"> 
+          <div class="col">
+            <p>
+              <strong>Name:</strong>
+              <%= @squad.name %>
+            </p>
+          </div>
+          
+          <div class="col">  
+            <p>   
+              <strong>Leader:</strong>
+              <%= @squad.leader.name %> 
+            </p>              
+          </div>
+
+        </div>
+
+        <div class="row"> 
+          <div class="col">  
+            <p>   
+              <strong>Crews:</strong>
+              <%= @squad.crews.map(&:name).join(', ') %>
+            </p>              
+          </div>
+        </div>
+        
+        <div> 
+          <%= link_to 'Edit', edit_squad_path(@squad) %> |
+          <%= link_to 'Back', squads_path %>
+        </div>
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
