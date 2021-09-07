@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :missions
   resources :squads
   resources :crews
   devise_for :users

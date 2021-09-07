@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_and_belongs_to_many :crews_as_passenger, class_name: "Crew", join_table: :crews_passengers
 
   has_many :squads, foreign_key: "leader_id"
+  has_many :missions, foreign_key: "commander_id"
 end
