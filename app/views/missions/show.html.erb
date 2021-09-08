@@ -1,34 +1,69 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/notice' %>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @mission.start_date %>
-</p>
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Mission</h3>
+    </div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @mission.end_date %>
-</p>
+    <div class="card-body">  
+      <div class="container">
+        <div class="row"> 
+          <div class="col">  
+            <p>   
+              <strong>Commander:</strong>
+              <%= @mission.commander_id %>              
+            </p>              
+          </div>
+          <div class="col">  
+            <p>   
+              <strong>Location:</strong>
+              <%= @mission.location_id %>
+            </p>              
+          </div>
+        </div>
 
-<p>
-  <strong>Details:</strong>
-  <%= @mission.details %>
-</p>
+        
 
-<p>
-  <strong>Status:</strong>
-  <%= @mission.status %>
-</p>
+        <div class="row"> 
+          <div class="col">
+            <p>
+              <strong>Start date:</strong>
+              <%= @mission.start_date %>
+            </p>
+          </div>
+          
+          <div class="col">  
+            <p>   
+              <strong>End date:</strong>
+              <%= @mission.end_date %>
+            </p>              
+          </div>
+          
+          <div class="col-6">  
+            <p>   
+              <strong>Status:</strong>
+              <%= @mission.status %>
+            </p>              
+          </div>
 
-<p>
-  <strong>Commander:</strong>
-  <%= @mission.commander_id %>
-</p>
+        </div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @mission.location_id %>
-</p>
+        <div class="row"> 
+          <p>   
+            <strong>Details:</strong>
+            <%= @mission.details %>
+          </p>              
+        </div>
 
-<%= link_to 'Edit', edit_mission_path(@mission) %> |
-<%= link_to 'Back', missions_path %>
+        <div> 
+          <%= link_to 'Edit', edit_mission_path(@mission) %> |
+          <%= link_to 'Back', missions_path %>
+        </div>
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>

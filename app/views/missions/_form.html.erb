@@ -1,7 +1,9 @@
-<%= form_with(model: mission) do |form| %>
-  <% if mission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mission.errors.count, "error") %> prohibited this mission from being saved:</h2>
+<% if mission.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div class="card-body">
+      <h5>
+      <%= pluralize(mission.errors.count, "error") %> 
+      prohibited this mission from being saved: </h5>
 
       <ul>
         <% mission.errors.each do |error| %>
@@ -9,39 +11,79 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date %>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date %>
-  </div>
+<%= form_with(model: mission) do |form| %>
+  <div class="container">
+    <div class="row">
+      <small class="form-text text-muted">
+        Use Ctrl or Shift to select multiple Crews for this Squad
+      </small>
+    </div>
+    </br>
 
-  <div class="field">
-    <%= form.label :details %>
-    <%= form.text_area :details %>
-  </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
+    <div class="row">
+      <div class="col">
+        <label for="commander">Select the Commander for this Mission </label>
+        <%= form.collection_select :commander_id, User.order(:name), :id, :name, 
+            {include_blank: false}, {class: 'form-select form-select'} %>
+      </div>
 
-  <div class="field">
-    <%= form.label :commander_id %>
-    <%= form.text_field :commander_id %>
-  </div>
+      <div class="col">
+        <label for="location">Select the Location </label>
+        <%= form.collection_select :location_id, Location.order(:system), :id, :system, 
+            {include_blank: false}, {class: 'form-select form-select'} %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :location_id %>
-    <%= form.text_field :location_id %>
-  </div>
+    </br>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group row">
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :start_date %>
+          <%= form.date_select :start_date ,{include_blank: false}, {class: 'form-select-sm'} %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :end_date %>
+          <%= form.date_select :end_date ,{include_blank: false}, {class: 'form-select-sm'} %>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :details %>
+          <%= form.text_area :details , class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :status %>
+          <%= form.select :status, Mission.statuses.keys, {}, class:'form-select' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <div class="actions">
+          <%= form.submit "Submit" , class: 'btn btn-primary' %>
+        </div>
+
+      </div>
+      
+    </div>
+
   </div>
 <% end %>

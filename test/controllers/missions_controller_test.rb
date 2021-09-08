@@ -3,8 +3,8 @@ require "test_helper"
 class MissionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @mission = missions(:yavinfour)
-    @mission.commander = User.first
-    @mission.location = Location.first
+    # @mission.commander = User.first
+    # @mission.location = Location.first
   end
 
   test "should get index" do

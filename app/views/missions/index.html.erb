@@ -1,37 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="col-lg-12 mb-4">
 
-<h1>Missions</h1>
+  <%= render 'layouts/notice' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Details</th>
-      <th>Status</th>
-      <th>Commander</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Missions</h3>
+    </div>
+    
+    <div class="card-body">   
+      <div class="container">
+        <small class="form-text text-muted">
+          Click "Show" to see all the details for this Mission
+        </small>
+      </div>
+      </br>
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Status</th>
+              <th>Commander</th>
+              <th>Actions </th>
+            </tr>
+          </thead>
 
-  <tbody>
-    <% @missions.each do |mission| %>
-      <tr>
-        <td><%= mission.start_date %></td>
-        <td><%= mission.end_date %></td>
-        <td><%= mission.details %></td>
-        <td><%= mission.status %></td>
-        <td><%= mission.commander_id %></td>
-        <td><%= mission.location_id %></td>
-        <td><%= link_to 'Show', mission %></td>
-        <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
-        <td><%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <tbody>
+            <% @missions.each do |mission| %>
+              <tr>
+                <td><%= mission.start_date %></td>
+                <td><%= mission.end_date %></td>
+                <td><%= mission.status %></td>
+                <td><%= mission.commander.name %></td>
 
-<br>
+                <td>
+                    <%= link_to 'Show', mission %> <span>  |  </span>
+                    <%= link_to 'Edit', edit_mission_path(mission) %> <span>  |  </span>
+                    <%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>            
+            
+          </tbody>
+        </table>
+      </div>
+    
+      <br>
 
-<%= link_to 'New Mission', new_mission_path %>
+      <%= link_to 'New Mission', new_mission_path %>
+    </div>
+
+  </div>
+</div>

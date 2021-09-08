@@ -7,6 +7,8 @@ yavinfour:
            An Imperial cruiser has landed on Yavin Four. The Rebel base is threatened. 
            The mission is to prevent the assault on Yavin Four…at any cost.
   status: 1
+  commander_id: 1
+  location_id: 1
 
 thyferra:
   start_date: 2021-09-03
@@ -17,3 +19,5 @@ thyferra:
            travel to Thyferra…where they are trapped by a squadron of 
            stormtroopers! Escape from Thyferra… before it's too late.
   status: 1
+  commander_id: 2
+  location_id: 2
