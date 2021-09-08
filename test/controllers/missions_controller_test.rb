@@ -2,7 +2,9 @@ require "test_helper"
 
 class MissionsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @mission = missions(:one)
+    @mission = missions(:yavinfour)
+    @mission.commander = User.first
+    @mission.location = Location.first
   end
 
   test "should get index" do
@@ -17,7 +19,12 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mission" do
     assert_difference('Mission.count') do
-      post missions_url, params: { mission: { commander_id: @mission.commander_id, details: @mission.details, end_date: @mission.end_date, location_id: @mission.location_id, start_date: @mission.start_date, status: @mission.status } }
+      post missions_url, params: { mission: { commander_id: @mission.commander_id, 
+                                            details: @mission.details, 
+                                            end_date: @mission.end_date, 
+                                            location_id: @mission.location_id, 
+                                            start_date: @mission.start_date, 
+                                            status: @mission.status } }
     end
 
     assert_redirected_to mission_url(Mission.last)
@@ -34,7 +41,12 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update mission" do
-    patch mission_url(@mission), params: { mission: { commander_id: @mission.commander_id, details: @mission.details, end_date: @mission.end_date, location_id: @mission.location_id, start_date: @mission.start_date, status: @mission.status } }
+    patch mission_url(@mission), params: { mission: { commander_id: @mission.commander_id, 
+                                                    details: "New details for this mission", 
+                                                    end_date: @mission.end_date, 
+                                                    location_id: @mission.location_id, 
+                                                    start_date: @mission.start_date, 
+                                                    status: "in_progress" } }
     assert_redirected_to mission_url(@mission)
   end
 

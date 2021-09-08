@@ -3,7 +3,6 @@ class Squad < ApplicationRecord
 
   has_and_belongs_to_many :crews
   belongs_to :leader, class_name: "User"
-  belongs_to :mission
 
   validates_presence_of :crews, :leader
 end

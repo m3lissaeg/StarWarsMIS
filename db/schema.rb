@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_001511) do
+ActiveRecord::Schema.define(version: 2021_09_03_235847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,9 +96,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_001511) do
     t.bigint "leader_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "mission_id"
     t.index ["leader_id"], name: "index_squads_on_leader_id"
-    t.index ["mission_id"], name: "index_squads_on_mission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,6 +122,5 @@ ActiveRecord::Schema.define(version: 2021_09_04_001511) do
 
   add_foreign_key "missions", "locations"
   add_foreign_key "missions", "users", column: "commander_id"
-  add_foreign_key "squads", "missions"
   add_foreign_key "squads", "users", column: "leader_id"
 end
