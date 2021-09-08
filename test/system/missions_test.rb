@@ -10,44 +10,63 @@ class MissionsTest < ApplicationSystemTestCase
     assert_selector "h3", text: "Missions"
   end
 
-  # test "creating a Mission" do
-  #   visit missions_url
-  #   click_on "New Mission"
+  test "creating a Mission" do
+    visit missions_url
+    click_on "New Mission"
 
-  #   fill_in "Commander", with: @mission.commander_id
-  #   fill_in "Details", with: @mission.details
-  #   fill_in "End date", with: @mission.end_date
-  #   fill_in "Location", with: @mission.location_id
-  #   fill_in "Start date", with: @mission.start_date
-  #   fill_in "Status", with: @mission.status
-  #   click_on "Create Mission"
+    page.select "Rey Skywalker", from: "mission_commander_id"
+    page.select "Death Star", from: "mission_location_id"
+    fill_in "Details", with: @mission.details
+    
+    page.select "2021", from: "mission_start_date_1i"
+    page.select "September", from: "mission_start_date_2i"
+    page.select "8", from: "mission_start_date_3i"
+    
+    page.select "2022", from: "mission_end_date_1i"
+    page.select "September", from: "mission_end_date_2i"
+    page.select "8", from: "mission_end_date_3i"
 
-  #   assert_text "Mission was successfully created"
-  #   click_on "Back"
-  # end
+    page.select "planning", from: "mission_status"
+    click_on "Submit"
 
-  # test "updating a Mission" do
-  #   visit missions_url
-  #   click_on "Edit", match: :first
+    assert_text "Mission was successfully created"
+    assert_text @mission.commander.id
+    assert_text @mission.location.id
+    assert_text "2021-09-08"
+    click_on "Back"
+  end
 
-  #   fill_in "Commander", with: @mission.commander_id
-  #   fill_in "Details", with: @mission.details
-  #   fill_in "End date", with: @mission.end_date
-  #   fill_in "Location", with: @mission.location_id
-  #   fill_in "Start date", with: @mission.start_date
-  #   fill_in "Status", with: @mission.status
-  #   click_on "Update Mission"
+  test "updating a Mission" do
+    visit missions_url
+    click_on "Edit", match: :first
 
-  #   assert_text "Mission was successfully updated"
-  #   click_on "Back"
-  # end
+    page.select "Luke Skywalker", from: "mission_commander_id"
+    page.select "Death Star", from: "mission_location_id"
+    fill_in "Details", with: @mission.details
+    
+    page.select "2016", from: "mission_start_date_1i"
+    page.select "August", from: "mission_start_date_2i"
+    page.select "8", from: "mission_start_date_3i"
+    
+    page.select "2021", from: "mission_end_date_1i"
+    page.select "November", from: "mission_end_date_2i"
+    page.select "8", from: "mission_end_date_3i"
 
-  # test "destroying a Mission" do
-  #   visit missions_url
-  #   page.accept_confirm do
-  #     click_on "Destroy", match: :first
-  #   end
+    page.select "success", from: "mission_status"
+    click_on "Submit"
 
-    # assert_text "Mission was successfully destroyed"
-  # end
+    assert_text "Mission was successfully updated"
+    assert_equal "success", Mission.order('id ASC').first.status
+
+    click_on "Back"
+  end
+
+  test "destroying a Mission" do
+    visit missions_url
+    page.accept_confirm do
+      click_on "Destroy", match: :first
+    end
+
+    assert_text "Mission was successfully destroyed"
+  end
 end
