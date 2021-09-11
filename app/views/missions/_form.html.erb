@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <small class="form-text text-muted">
-        Use Ctrl or Shift to select multiple Crews for this Squad
+        Use Ctrl/Cmd or Shift to select multiple Squads for this Mission
       </small>
     </div>
     </br>
@@ -26,13 +26,13 @@
 
     <div class="row">
       <div class="col">
-        <label for="commander">Select the Commander for this Mission </label>
+        <label for="commander">Select the Commander for this Mission: </label>
         <%= form.collection_select :commander_id, User.order(:name), :id, :name, 
             {include_blank: false}, {class: 'form-select form-select'} %>
       </div>
 
       <div class="col">
-        <label for="location">Select the Location </label>
+        <label for="location">Select the Location: </label>
         <%= form.collection_select :location_id, Location.order(:system), :id, :system, 
             {include_blank: false}, {class: 'form-select form-select'} %>
       </div>
