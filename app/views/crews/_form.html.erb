@@ -36,7 +36,7 @@
       <div class="col">
         <div class="form-group">
           <label for="ship">Select the ship for this Crew</label>
-          <%= form.collection_select :ship_ids, Ship.order(:name), :id, :name, 
+          <%= form.collection_select :ship_id, Ship.order(:name), :id, :name, 
               {include_blank: false}, {class: 'form-select form-select-sm'} %>
         </div>
       </div>

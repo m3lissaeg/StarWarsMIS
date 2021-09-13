@@ -67,7 +67,7 @@ class CrewsController < ApplicationController
     def crew_params
       params.require(:crew).permit(
         :name,
-        :ship_ids,
+        :ship_id,
         droid_ids: [],
         rebel_ids: [],
         passenger_ids: []

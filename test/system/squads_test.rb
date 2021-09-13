@@ -10,20 +10,19 @@ class SquadsTest < ApplicationSystemTestCase
     assert_selector "h3", text: "Squads"
   end
 
-  # test "creating a Squad" do
-  #   visit squads_url
-  #   click_on "New Squad"
+  test "creating a Squad" do
+    visit squads_url
+    click_on "New Squad"
 
-  #   fill_in "Name", with: @squad.name
-  #   page.select "Rey Skywalker", from: "squad_leader_id"
-  #   page.select "Ghost team", from: "squad_crew_ids"
-  #   page.select "Red Five", from: "squad_crew_ids"
+    fill_in "Name", with: @squad.name
+    page.select "Rey Skywalker", from: "squad_leader_id"
+    page.select "Ghost team", from: "squad_crew_ids"
     
-  #   click_on "Submit"
+    click_on "Submit"
 
-  #   assert_text "Squad was successfully created"
-  #   click_on "Back"
-  # end
+    assert_text "Squad was successfully created"
+    click_on "Back"
+  end
 
   test "updating a Squad" do
     visit squads_url

@@ -15,7 +15,7 @@ class CrewsTest < ApplicationSystemTestCase
     click_on "New Crew"
 
     fill_in "Name", with: @crew.name
-    page.select "X-wing fighter", from: "crew_ship_ids"
+    page.select "X-wing fighter", from: "crew_ship_id"
     page.select "C-3PO", from: "crew_droid_ids"
     page.select "Rey Skywalker", from: "crew_rebel_ids"
     click_on "Submit"
@@ -29,7 +29,7 @@ class CrewsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Name", with: "New cool name B)"
-    page.select "Millenium Falcon", from: "crew_ship_ids"
+    page.select "Millenium Falcon", from: "crew_ship_id"
     page.select "R2-D2", from: "crew_droid_ids"
     page.select "Luke Skywalker", from: "crew_rebel_ids"
     click_on "Submit"

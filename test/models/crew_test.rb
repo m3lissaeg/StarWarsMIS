@@ -4,7 +4,6 @@ class CrewTest < ActiveSupport::TestCase
   setup do
     @crew = crews(:red5)
     @crew.droids << Droid.first
-    @crew.ships << Ship.first
     @crew.rebels << User.first
   end
 
@@ -19,8 +18,7 @@ class CrewTest < ActiveSupport::TestCase
   end
 
   test "ship should be present" do
-    @crew.ships.delete(1) 
-    assert_not @crew.valid?
+    assert_not @crew.ship.nil?
   end
 
   test "rebel should be present" do

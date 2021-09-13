@@ -19,14 +19,14 @@
           <div class="col">  
             <p>   
               <strong>Ship:</strong>
-              <%= @crew.ships.map(&:name).join(', ') %> 
+              <%= @crew.ship.name %> 
             </p>              
           </div>
 
           <div class="col">  
             <p>   
               <strong>Droids:</strong>
-              <%= @crew.droids.map(&:name).join(', ') %>
+              <%= @crew.droids.pluck(:name).join(', ') %>
             </p>              
           </div>
 
@@ -36,7 +36,7 @@
           <div class="col">  
             <p>   
               <strong>Rebels:</strong>
-              <%= @crew.rebels.map(&:name).join(', ') %>
+              <%= @crew.rebels.pluck(:name).join(', ') %>
             </p>              
           </div>
         </div>
@@ -46,7 +46,7 @@
           <div class="col">  
             <p>   
               <strong>Passengers:</strong>
-              <%= @crew.passengers.map(&:name).join(', ') %>
+              <%= @crew.passengers.pluck(:name).join(', ') %>
             </p>              
           </div>
         </div>

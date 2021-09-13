@@ -32,11 +32,11 @@
               <tr>
                 <td><%= crew.name %></td>
                 <td>
-                  <%= crew.ships.map(&:name).join(', ') %>
+                  <%= crew.ship.name %>
                 </td>
                 
                 <td>
-                  <%= crew.droids.map(&:name).join(', ') %>
+                  <%= crew.droids.pluck(:name).join(', ') %>
                 </td>
 
 

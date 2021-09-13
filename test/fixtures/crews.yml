@@ -3,19 +3,15 @@
 red5:
   id: 1
   name: Red Five 
-  # droids: C3PO
-  # rebels: luke
-  # ships: x-wing 
-  # created_at: <%= Time.now %> 
-  # updated_at: <%= Time.now %> 
-  
+  ship_id: 1
+  squad: jedi
+  rebels: rey
+  # droids: C3PO, R2D2
 
 spectres:
   id: 2
   name: Ghost team
-  # droids: R2D2
-  # rebels: rey
-  # ships: falcon
-  # created_at: <%= Time.now %>   
-  # updated_at: <%= Time.now %> 
-
+  ship_id: 2
+  squad: hansquad
+  # rebels: luke
+  # droids: C3PO, R2D2
