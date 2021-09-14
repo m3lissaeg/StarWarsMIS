@@ -29,7 +29,7 @@
           <div class="col">  
             <p>   
               <strong>Crews:</strong>
-              <%= @squad.crews.map(&:name).join(', ') %>
+              <%= @squad.crews.pluck(:name).join(', ') %>
             </p>              
           </div>
         </div>

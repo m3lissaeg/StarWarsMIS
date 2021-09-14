@@ -19,7 +19,6 @@ class SquadsTest < ApplicationSystemTestCase
     page.select "Ghost team", from: "squad_crew_ids"
     
     click_on "Submit"
-
     assert_text "Squad was successfully created"
     click_on "Back"
   end

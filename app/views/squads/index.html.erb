@@ -34,7 +34,7 @@
                 </td>
                 
                 <td>
-                  <%= squad.crews.map(&:name).join(', ') %>
+                  <%= squad.crews.pluck(:name).join(', ') %>
                 </td>
 
 
