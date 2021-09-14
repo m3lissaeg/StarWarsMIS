@@ -15,17 +15,17 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should create squad" do
-  #   assert_difference('Squad.count') do
-  #     post squads_url, params: { squad: { name: "Name of the Squad",
-  #                                       leader_id: 1,
-  #                                       crew_ids: ["1", "2"]
-  #                             } }
+  test "should create squad" do
+    assert_difference('Squad.count') do
+      post squads_url, params: { squad: { name: "Name of the Squad",
+                                        leader_id: 1,
+                                        crew_ids: ["1", "2"]
+                              } }
                            
-  #   end
+    end
 
-  #   assert_redirected_to squad_url(Squad.last)
-  # end
+    assert_redirected_to squad_url(Squad.last)
+  end
 
   test "should show squad" do
     get squad_url(@squad)
