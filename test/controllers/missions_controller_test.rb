@@ -17,12 +17,14 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create mission" do
     assert_difference('Mission.count') do
-      post missions_url, params: { mission: { commander_id: @mission.commander_id, 
+      post missions_url, params: { mission: { commander_id: 2, 
                                             details: @mission.details, 
                                             end_date: @mission.end_date, 
-                                            location_id: @mission.location_id, 
+                                            location_id: 2, 
                                             start_date: @mission.start_date, 
-                                            status: @mission.status } }
+                                            status: @mission.status,
+                                            squad_ids: ["1" , "2"] 
+                                  } }
     end
 
     assert_redirected_to mission_url(Mission.last)
@@ -44,7 +46,9 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
                                                     end_date: @mission.end_date, 
                                                     location_id: @mission.location_id, 
                                                     start_date: @mission.start_date, 
-                                                    status: "in_progress" } }
+                                                    status: "in_progress",
+                                                    squad_ids: ["1"] 
+                                        } }
     assert_redirected_to mission_url(@mission)
   end
 

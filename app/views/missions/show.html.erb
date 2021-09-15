@@ -21,6 +21,13 @@
               <%= @mission.location_id %>
             </p>              
           </div>
+
+          <div class="col-6">  
+            <p>   
+              <strong>Crews:</strong>
+              <%= @mission.squads.pluck(:name).join(', ') %>
+            </p>              
+          </div>
         </div>
 
         

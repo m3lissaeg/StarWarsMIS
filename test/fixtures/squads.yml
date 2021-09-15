@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 jedi:
+  id: 1
   name: Jedi team
   leader_id: 1
+  mission_id: 1
 
 hansquad:
+  id: 2
   name: The Han Solo Squad
-  leader_id: 1
+  leader_id: 2
+  mission_id: 2

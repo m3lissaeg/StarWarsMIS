@@ -64,6 +64,13 @@ class MissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mission_params
-      params.require(:mission).permit(:start_date, :end_date, :details, :status, :commander_id, :location_id)
+      params.require(:mission).permit(
+        :start_date,
+        :end_date,
+        :details,
+        :status,
+        :commander_id,
+        :location_id,
+        squad_ids: [])
     end
 end

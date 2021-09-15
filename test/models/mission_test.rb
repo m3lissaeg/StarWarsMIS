@@ -29,4 +29,8 @@ class MissionTest < ActiveSupport::TestCase
     @mission.location_id = ""
     assert_not @mission.valid?
   end
+
+  test "squads should be present" do
+    assert_not @mission.squads.empty?
+  end
 end

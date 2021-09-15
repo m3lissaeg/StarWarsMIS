@@ -26,6 +26,8 @@ class MissionsTest < ApplicationSystemTestCase
     page.select "September", from: "mission_end_date_2i"
     page.select "8", from: "mission_end_date_3i"
 
+    page.select "The Han Solo Squad", from: "mission_squad_ids"
+    
     page.select "planning", from: "mission_status"
     click_on "Submit"
 

@@ -4,10 +4,10 @@ red5:
   id: 1
   name: Red Five 
   ship_id: 1
-  squad: jedi
+  squad_id: 1
 
 spectres:
   id: 2
   name: Ghost team
   ship_id: 2
-  squad: hansquad
+  squad_id: 2

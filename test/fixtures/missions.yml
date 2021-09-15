@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 yavinfour:
+  id: 1
   start_date: 2021-09-03
   end_date: 2021-09-03
   details: The first Death Star has been destroyed. But the Empire remains. 
@@ -11,6 +12,7 @@ yavinfour:
   location_id: 1
 
 thyferra:
+  id: 2
   start_date: 2021-09-03
   end_date: 2021-09-03
   details: Escape from Thyferra. The Rebel forces have found an Imperial 
