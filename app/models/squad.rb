@@ -3,7 +3,7 @@ class Squad < ApplicationRecord
 
   has_many :crews, :dependent => :destroy
   belongs_to :leader, class_name: "User"
-  belongs_to :mission, optional: true
+  belongs_to :mission
 
-  validates_presence_of :leader, :crews
+  validates_presence_of :leader
 end

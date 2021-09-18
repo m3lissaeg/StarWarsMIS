@@ -1,7 +1,7 @@
 <% if squad.errors.any? %>
   <div class="alert alert-danger" role="alert">
     <div class="card-body">
-      <h5><%= pluralize(squad.errors.count, "error") %> 
+      <h5><%= pluralize(squad.errors.count, "error") %>
       prohibited this squad from being saved:</h5>
 
       <ul>
@@ -14,6 +14,7 @@
 <% end %>
 
 <%= form_with(model: squad) do |form| %>
+  <%= form.hidden_field :mission_id %>
   <div class="container">
     <div class="row">
       <small class="form-text text-muted">
@@ -34,7 +35,7 @@
       <div class="col">
         <div class="form-group">
           <label for="leader">Select the Leader for this Squad </label>
-          <%= form.collection_select :leader_id, User.order(:name), :id, :name, 
+          <%= form.collection_select :leader_id, User.order(:name), :id, :name,
               {include_blank: false}, {class: 'form-select form-select-sm'} %>
         </div>
       </div>
@@ -42,9 +43,9 @@
       <div class="col">
         <div class="form-group">
           <label for="crew">Select Crews: </label>
-          <%= form.collection_select :crew_ids, Crew.order(:name), :id, :name, {include_blank: false}, 
+          <%= form.collection_select :crew_ids, Crew.order(:name), :id, :name, {include_blank: false},
             {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
-          
+
         </div>
       </div>
     </div>
@@ -57,7 +58,7 @@
 
         <%= link_to 'Back', squads_path %>
       </div>
-      
+
     </div>
 
   </div>

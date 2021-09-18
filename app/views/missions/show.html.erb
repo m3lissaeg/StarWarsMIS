@@ -6,71 +6,77 @@
       <h3 class="m-0 font-weight-bold text-primary">Mission</h3>
     </div>
 
-    <div class="card-body">  
+    <div class="card-body">
       <div class="container">
-        <div class="row"> 
-          <div class="col">  
-            <p>   
+        <div class="row">
+          <div class="col">
+            <p>
               <strong>Commander:</strong>
-              <%= @mission.commander_id %>              
-            </p>              
+              <%= @mission.commander_id %>
+            </p>
           </div>
-          <div class="col">  
-            <p>   
+          <div class="col">
+            <p>
               <strong>Location:</strong>
               <%= @mission.location_id %>
-            </p>              
+            </p>
           </div>
 
-          <div class="col-6">  
-            <p>   
-              <strong>Crews:</strong>
-              <%= @mission.squads.pluck(:name).join(', ') %>
-            </p>              
+          <div class="col-6">
+            <p>
+              <strong>Squads:</strong>
+              <% @mission.squads.pluck(:id,:name).map do |id, name| %>
+                <%= link_to name, squad_path(id), target: :_blank %>
+              <% end %>
+            </p>
           </div>
         </div>
 
-        
 
-        <div class="row"> 
+
+        <div class="row">
           <div class="col">
             <p>
               <strong>Start date:</strong>
               <%= @mission.start_date %>
             </p>
           </div>
-          
-          <div class="col">  
-            <p>   
+
+          <div class="col">
+            <p>
               <strong>End date:</strong>
               <%= @mission.end_date %>
-            </p>              
+            </p>
           </div>
-          
-          <div class="col-6">  
-            <p>   
+
+          <div class="col-6">
+            <p>
               <strong>Status:</strong>
               <%= @mission.status %>
-            </p>              
+            </p>
           </div>
 
         </div>
 
-        <div class="row"> 
-          <p>   
+        <div class="row">
+          <p>
             <strong>Details:</strong>
             <%= @mission.details %>
-          </p>              
+          </p>
         </div>
 
-        <div> 
+        <div class="row">
+          <%= link_to 'Add Squad', new_squad_path(mission_id: @mission.id), class: 'btn btn-primary col-2' %>
+        </div>
+
+        <div>
           <%= link_to 'Edit', edit_mission_path(@mission) %> |
           <%= link_to 'Back', missions_path %>
         </div>
-        
+
       </div>
 
-      
+
     </div>
   </div>
 </div>

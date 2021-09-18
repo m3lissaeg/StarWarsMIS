@@ -12,7 +12,7 @@ class SquadsController < ApplicationController
 
   # GET /squads/new
   def new
-    @squad = Squad.new
+    @squad = Squad.new(mission_id: params[:mission_id])
   end
 
   # GET /squads/1/edit
@@ -67,7 +67,7 @@ class SquadsController < ApplicationController
       params.require(:squad).permit(
         :name,
         :leader_id,
-        crew_ids: [],
+        :mission_id
       )
     end
 end
