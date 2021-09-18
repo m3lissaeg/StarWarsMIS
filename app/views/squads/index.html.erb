@@ -4,10 +4,13 @@
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h3 class="m-0 font-weight-bold text-primary">Squads</h3>
+      <h3 class="m-0 font-weight-bold text-primary">
+        Squads for <%= link_to "Mission #{@mission.id}", @mission, target: :_blank %>
+      </h3>
+      <h5>With details: <%= @mission.details %></h5>
     </div>
-    
-    <div class="card-body">   
+
+    <div class="card-body">
       <div class="container">
         <small class="form-text text-muted">
           Click "Show" to see all details about the Leader and the Crews for this Squad
@@ -32,26 +35,26 @@
                 <td>
                   <%= squad.leader.name %>
                 </td>
-                
+
                 <td>
                   <%= squad.crews.pluck(:name).join(', ') %>
                 </td>
 
 
                 <td>
-                    <%= link_to 'Show', squad %> <span>  |  </span>
-                    <%= link_to 'Edit', edit_squad_path(squad) %> <span>  |  </span>
-                    <%= link_to 'Destroy', squad, method: :delete, data: { confirm: 'Are you sure?' } %> 
+                    <%= link_to 'Show', [@mission, squad] %> <span>  |  </span>
+                    <%= link_to 'Edit', edit_mission_squad_path(@mission, squad) %> <span>  |  </span>
+                    <%= link_to 'Destroy', [@mission, squad], method: :delete, data: { confirm: 'Are you sure?' } %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
-    
+
       <br>
 
-      <%= link_to 'New Squad', new_squad_path %>
+      <%= link_to 'New Squad', new_mission_squad_path(@mission) %>
     </div>
 
   </div>

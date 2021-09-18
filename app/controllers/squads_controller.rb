@@ -1,32 +1,33 @@
 class SquadsController < ApplicationController
+  before_action :set_mission
   before_action :set_squad, only: %i[ show edit update destroy ]
 
-  # GET /squads or /squads.json
+  # GET /missions/:mission_id/squads or /missions/:mission_id/squads.json
   def index
-    @squads = Squad.all
+    @squads = @mission.squads
   end
 
-  # GET /squads/1 or /squads/1.json
+  # GET /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def show
   end
 
-  # GET /squads/new
+  # GET /missions/:mission_id/squads/new
   def new
-    @squad = Squad.new(mission_id: params[:mission_id])
+    @squad = @mission.squads.build
   end
 
-  # GET /squads/1/edit
+  # GET /missions/:mission_id/squads/1/edit
   def edit
   end
 
-  # POST /squads or /squads.json
+  # POST /missions/:mission_id/squads or /missions/:mission_id/squads.json
   def create
-    @squad = Squad.new(squad_params)
+    @squad = @mission.squads.build(squad_params)
 
     respond_to do |format|
       if @squad.save
-        format.html { redirect_to @squad, notice: "Squad was successfully created." }
-        format.json { render :show, status: :created, location: @squad }
+        format.html { redirect_to [@mission, @squad], notice: "Squad was successfully created." }
+        format.json { render :show, status: :created, location: [@mission, @squad] }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @squad.errors, status: :unprocessable_entity }
@@ -34,12 +35,12 @@ class SquadsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /squads/1 or /squads/1.json
+  # PATCH/PUT /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def update
     respond_to do |format|
       if @squad.update(squad_params)
-        format.html { redirect_to @squad, notice: "Squad was successfully updated." }
-        format.json { render :show, status: :ok, location: @squad }
+        format.html { redirect_to [@mission, @squad], notice: "Squad was successfully updated." }
+        format.json { render :show, status: :ok, location: [@mission, @squad] }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @squad.errors, status: :unprocessable_entity }
@@ -47,19 +48,23 @@ class SquadsController < ApplicationController
     end
   end
 
-  # DELETE /squads/1 or /squads/1.json
+  # DELETE /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def destroy
     @squad.destroy
     respond_to do |format|
-      format.html { redirect_to squads_url, notice: "Squad was successfully destroyed." }
+      format.html { redirect_to mission_squads_url(@mission), notice: "Squad was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_mission
+      @mission = Mission.find(params[:mission_id])
+    end
+
     def set_squad
-      @squad = Squad.find(params[:id])
+      @squad = @mission.squads.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -67,7 +72,6 @@ class SquadsController < ApplicationController
       params.require(:squad).permit(
         :name,
         :leader_id,
-        :mission_id
       )
     end
 end

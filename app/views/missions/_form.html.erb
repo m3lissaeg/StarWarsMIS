@@ -2,7 +2,7 @@
   <div class="alert alert-danger" role="alert">
     <div class="card-body">
       <h5>
-      <%= pluralize(mission.errors.count, "error") %> 
+      <%= pluralize(mission.errors.count, "error") %>
       prohibited this mission from being saved: </h5>
 
       <ul>
@@ -27,23 +27,14 @@
     <div class="row">
       <div class="col">
         <label for="commander">Select the Commander for this Mission: </label>
-        <%= form.collection_select :commander_id, User.order(:name), :id, :name, 
+        <%= form.collection_select :commander_id, User.order(:name), :id, :name,
             {include_blank: false}, {class: 'form-select form-select'} %>
       </div>
 
       <div class="col">
         <label for="location">Select the Location: </label>
-        <%= form.collection_select :location_id, Location.order(:system), :id, :system, 
+        <%= form.collection_select :location_id, Location.order(:system), :id, :system,
             {include_blank: false}, {class: 'form-select form-select'} %>
-      </div>
-
-      <div class="col">
-        <div class="form-group">
-          <label for="crew">Select Squads: </label>
-          <%= form.collection_select :squad_ids, Squad.order(:name), :id, :name, {include_blank: false}, 
-            {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
-          
-        </div>
       </div>
 
     </div>
@@ -66,7 +57,7 @@
         </div>
       </div>
 
-      
+
     </div>
 
     <div class="row">
@@ -92,7 +83,7 @@
         </div>
 
       </div>
-      
+
     </div>
 
   </div>

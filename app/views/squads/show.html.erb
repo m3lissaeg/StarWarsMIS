@@ -6,42 +6,42 @@
       <h3 class="m-0 font-weight-bold text-primary">squad</h3>
     </div>
 
-    <div class="card-body">  
+    <div class="card-body">
       <div class="container">
-        <div class="row"> 
+        <div class="row">
           <div class="col">
             <p>
               <strong>Name:</strong>
               <%= @squad.name %>
             </p>
           </div>
-          
-          <div class="col">  
-            <p>   
+
+          <div class="col">
+            <p>
               <strong>Leader:</strong>
-              <%= @squad.leader.name %> 
-            </p>              
+              <%= @squad.leader.name %>
+            </p>
           </div>
 
         </div>
 
-        <div class="row"> 
-          <div class="col">  
-            <p>   
+        <div class="row">
+          <div class="col">
+            <p>
               <strong>Crews:</strong>
               <%= @squad.crews.pluck(:name).join(', ') %>
-            </p>              
+            </p>
           </div>
         </div>
-        
-        <div> 
-          <%= link_to 'Edit', edit_squad_path(@squad) %> |
-          <%= link_to 'Back', squads_path %>
+
+        <div>
+          <%= link_to 'Edit', edit_mission_squad_path(@mission, @squad) %> |
+          <%= link_to 'Back', mission_squads_path(@mission) %>
         </div>
-        
+
       </div>
 
-      
+
     </div>
   </div>
 </div>

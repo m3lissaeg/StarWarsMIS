@@ -1,2 +1,2 @@
 json.extract! squad, :id, :name, :created_at, :updated_at
-json.url squad_url(squad, format: :json)
+json.url mission_squad_url(@mission, squad, format: :json)
