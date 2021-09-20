@@ -4,7 +4,9 @@
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h3 class="m-0 font-weight-bold text-primary">Crews</h3>
+      <h3 class="m-0 font-weight-bold text-primary">
+        Crews for <%= link_to "Squad #{@squad.name}", mission_squad_path(@mission, @squad), target: :_blank %>
+      </h3>
     </div>
     
     <div class="card-body">   
@@ -41,9 +43,9 @@
 
 
                 <td>
-                    <%= link_to 'Show', crew %> <span>  |  </span>
-                    <%= link_to 'Edit', edit_crew_path(crew) %> <span>  |  </span>
-                    <%= link_to 'Destroy', crew, method: :delete, data: { confirm: 'Are you sure?' } %> 
+                    <%= link_to 'Show', [@mission, @squad, crew]  %> <span>  |  </span>
+                    <%= link_to 'Edit', edit_mission_squad_crew_path(@mission, @squad, crew) %> <span>  |  </span>
+                    <%= link_to 'Destroy', [@mission, @squad, crew], method: :delete, data: { confirm: 'Are you sure?' } %> 
                 </td>
               </tr>
             <% end %>
@@ -52,9 +54,9 @@
       </div>
     
       <br>
-      
+      <br>      
 
-      <%= link_to 'New Crew', new_crew_path %>
+      <%= link_to 'New Crew', new_mission_squad_crew_path(@mission, @squad) %>
     </div>
     
 

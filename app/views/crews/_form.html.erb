@@ -14,7 +14,7 @@
 <% end %>
 
 
-<%= form_with(model: crew) do |form| %>
+<%= form_with(model: [@mission, @squad, crew]) do |form| %>
   
   <div class="container">
     <div class="row">
@@ -52,22 +52,19 @@
     </div>
 
     <div class="row">
-      <div class="form-check">
+      <div class="col form-check">
         <label for="rebels">Select Rebels: </label>
         <%= form.collection_select :rebel_ids, User.order(:name), :id, :name, {include_blank: false}, 
           {class: 'form-select form-select-sm',size: '3',:multiple => true }  %>
-        
+      </div>
+
+      <div class="col form-check">
+        <label for="rebels">Select Passengers: </label>
+        <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
+          {class: 'form-select form-select-sm', size: '3', :multiple => true }  %>
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-check">
-        <label for="rebels">Select Passengers: </label>
-        <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
-          {class: 'form-select form-select-sm',size: '3', :multiple => true }  %>
-      
-      </div>
-    </div>
     </br>
 
     <div class="row">
@@ -76,7 +73,7 @@
           <%= form.submit "Submit" , class: 'btn btn-primary' %>
         </div>
 
-        <%= link_to 'Back', crews_path %>
+        <%= link_to 'Back', mission_squad_crews_path(@mission, @squad) %>
       </div>
       
     </div>

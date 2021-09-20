@@ -72,6 +72,7 @@ class SquadsController < ApplicationController
       params.require(:squad).permit(
         :name,
         :leader_id,
+        crew_ids: []
       )
     end
 end

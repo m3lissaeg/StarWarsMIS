@@ -23,28 +23,18 @@
     </br>
 
     <div class="row">
-      <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name , class: 'form-control' %>
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :name %>
+          <%= form.text_field :name , class: 'form-control' %>
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-
+      
       <div class="col">
         <div class="form-group">
           <label for="leader">Select the Leader for this Squad </label>
           <%= form.collection_select :leader_id, User.order(:name), :id, :name,
               {include_blank: false}, {class: 'form-select form-select-sm'} %>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="form-group">
-          <label for="crew">Select Crews: </label>
-          <%= form.collection_select :crew_ids, Crew.order(:name), :id, :name, {include_blank: false},
-            {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
-
         </div>
       </div>
     </div>
