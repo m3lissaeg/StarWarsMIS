@@ -30,7 +30,4 @@ class MissionTest < ActiveSupport::TestCase
     assert_not @mission.valid?
   end
 
-  test "squads should be present" do
-    assert_not @mission.squads.empty?
-  end
 end
