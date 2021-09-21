@@ -2,16 +2,18 @@ require "application_system_test_case"
 
 class CrewsTest < ApplicationSystemTestCase
   setup do
+    @squad = squads(:jedi)
     @crew = crews(:red5)
+    @mission = missions(:yavinfour)
   end
 
   test "visiting the index" do
-    visit crews_url
+    visit mission_squad_crews_url(@mission, @squad)
     assert_selector "h3", text: "Crews"
   end
 
   test "creating a Crew" do
-    visit crews_url
+    visit mission_squad_crews_url(@mission, @squad)
     click_on "New Crew"
 
     fill_in "Name", with: @crew.name
@@ -25,7 +27,7 @@ class CrewsTest < ApplicationSystemTestCase
   end
 
   test "updating a Crew" do
-    visit crews_url
+    visit mission_squad_crews_url(@mission, @squad)
     click_on "Edit", match: :first
 
     fill_in "Name", with: "New cool name B)"
@@ -48,7 +50,7 @@ class CrewsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Crew" do
-    visit crews_url
+    visit mission_squad_crews_url(@mission, @squad)
     page.accept_confirm do
       click_on "Destroy", match: :first
     end

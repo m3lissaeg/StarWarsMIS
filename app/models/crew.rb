@@ -5,7 +5,7 @@ class Crew < ApplicationRecord
   has_and_belongs_to_many :passengers, class_name: "User", join_table: :crews_passengers
   
   belongs_to :ship  
-  belongs_to :squad, optional: true
+  belongs_to :squad
 
   validates_presence_of :droids, :rebels, :ship
   

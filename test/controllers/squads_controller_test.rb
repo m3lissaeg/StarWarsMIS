@@ -3,53 +3,52 @@ require "test_helper"
 class SquadsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @squad = squads(:jedi)
+    @mission = missions(:yavinfour)
   end
 
   test "should get index" do
-    get squads_url
+    get mission_squads_url(@mission)
     assert_response :success
   end
 
   test "should get new" do
-    get new_squad_url
+    get new_mission_squad_url(@mission)
     assert_response :success
   end
 
   test "should create squad" do
     assert_difference('Squad.count') do
-      post squads_url, params: { squad: { name: "Name of the Squad",
-                                        leader_id: 1,
-                                        crew_ids: ["1", "2"]
+      post mission_squads_url(@mission), params: { squad: { name: "Name of the Squad",
+                                        leader_id: 1
                               } }
                            
     end
 
-    assert_redirected_to squad_url(Squad.last)
+    assert_redirected_to mission_squad_url(@mission, Squad.last)
   end
 
   test "should show squad" do
-    get squad_url(@squad)
+    get mission_squad_url(@mission, @squad)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_squad_url(@squad)
+    get edit_mission_squad_url(@mission, @squad)
     assert_response :success
   end
 
   test "should update squad" do
-    patch squad_url(@squad), params: { squad: { name: "New fansy name",
-                                              leader_id: "2",
-                                              crew_ids: ["1"]
-                                    } }
-    assert_redirected_to squad_url(@squad)
+    patch mission_squad_url(@mission, @squad), params: { squad: { name: "New fansy name",
+                                              leader_id: "2"
+                                            } }
+    assert_redirected_to mission_squad_url(@mission, @squad)
   end
 
   test "should destroy squad" do
     assert_difference('Squad.count', -1) do
-      delete squad_url(@squad)
+      delete mission_squad_url(@mission, @squad)
     end
 
-    assert_redirected_to squads_url
+    assert_redirected_to mission_squads_url(@mission)
   end
 end

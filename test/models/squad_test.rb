@@ -3,9 +3,7 @@ require "test_helper"
 class SquadTest < ActiveSupport::TestCase
   setup do
     @squad = squads(:jedi)
-    crew = crews(:red5)
     # squad fixture has no crews assigned yet
-    @squad.crews << crew
   end
 
   test "name should be present" do
@@ -17,8 +15,12 @@ class SquadTest < ActiveSupport::TestCase
     assert_not @squad.leader.nil?
   end
 
-  test "crew should be present" do
-    assert_not @squad.crews.nil?
+  test "mission should be present" do
+    assert_not @squad.mission.nil?
+  end
+
+  test "squad should be valid without crews assigned" do
+    assert @squad.valid?
   end
 
 end

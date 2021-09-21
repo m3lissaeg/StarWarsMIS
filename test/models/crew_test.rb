@@ -26,4 +26,8 @@ class CrewTest < ActiveSupport::TestCase
     assert_not @crew.valid?
   end
 
+  test "squad should be present" do
+    assert_not @crew.squad_id.nil?
+  end
+
 end

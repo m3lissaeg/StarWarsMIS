@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class MissionsTest < ApplicationSystemTestCase
   setup do
+    @squad = squads(:jedi)
     @mission = missions(:yavinfour)
   end
 
@@ -26,8 +27,6 @@ class MissionsTest < ApplicationSystemTestCase
     page.select "September", from: "mission_end_date_2i"
     page.select "8", from: "mission_end_date_3i"
 
-    page.select "The Han Solo Squad", from: "mission_squad_ids"
-    
     page.select "planning", from: "mission_status"
     click_on "Submit"
 
@@ -60,6 +59,19 @@ class MissionsTest < ApplicationSystemTestCase
     assert_text "Mission was successfully updated"
     assert_equal "success", Mission.order('id ASC').first.status
 
+    click_on "Back"
+  end
+
+  test "Adding a Squad to a Mission" do
+    visit missions_url
+    click_on "Show", match: :first
+    click_on "Add Squad"
+    
+    fill_in "Name", with: @squad.name
+    page.select "Rey Skywalker", from: "squad_leader_id"
+    
+    click_on "Submit"
+    assert_text "Squad was successfully created"
     click_on "Back"
   end
 
