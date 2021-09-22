@@ -65,7 +65,7 @@
       <div class="col">
         <div class="form-group">
           <%= form.label :status %>
-          <%= form.select :status, Mission.statuses.keys, {}, class:'form-select' %>
+          <%= form.select :status, Mission.statuses.keys.map{ |key| [key.humanize, key] }, {}, class:'form-select' %>
         </div>
       </div>
     </div>

@@ -45,7 +45,7 @@
         <div class="form-group">
           <label for="droid">Select Droids: </label>
           <%= form.collection_select :droid_ids, Droid.order(:name), :id, :name, {include_blank: false}, 
-            {class: 'form-select form-select-sm',size: '2',:multiple => true }  %>
+            {class: 'form-select form-select-sm',size: '4',:multiple => true }  %>
           
         </div>
       </div>
@@ -55,13 +55,13 @@
       <div class="col form-check">
         <label for="rebels">Select Rebels: </label>
         <%= form.collection_select :rebel_ids, User.order(:name), :id, :name, {include_blank: false}, 
-          {class: 'form-select form-select-sm',size: '3',:multiple => true }  %>
+          {class: 'form-select form-select-sm',size: '4',:multiple => true }  %>
       </div>
 
       <div class="col form-check">
         <label for="rebels">Select Passengers: </label>
         <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
-          {class: 'form-select form-select-sm', size: '3', :multiple => true }  %>
+          {class: 'form-select form-select-sm', size: '4', :multiple => true }  %>
       </div>
     </div>
 
