@@ -49,56 +49,23 @@
             <%= @mission.details %>
           </p>
         </div>
-        
+
         </br>
-        
+
         <div class="row">
           <strong>Squads</strong>
-          <div class="table-responsive">
-            <table class="table align-middle">
-              <thead>
-                <tr>
-                  <th>Name    </th>
-                  <th>Leader    </th>
-                  <th>Crews  </th>
-                  <th>Actions </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% @mission.squads.each do |squad| %>
-                  <tr>
-                    <td><%= squad.name %></td>
-                    <td>
-                      <%= squad.leader.name %>
-                    </td>
-                
-                    <td>
-                      <%= squad.crews.pluck(:name).join(', ') %>
-                    </td>
-                
-                
-                    <td>
-                        <%= link_to 'Show', [@mission, squad] %> <span>  |  </span>
-                        <%= link_to 'Edit', edit_mission_squad_path(@mission, squad) %> <span>  |  </span>
-                        <%= link_to 'Destroy', [@mission, squad], method: :delete, data: { confirm: 'Are you sure?' } %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <%= render partial: 'squads/squad_list',
+                     locals: { squads: @mission.squads, mission: @mission } %>
 
         </br>
-        
+
         <div class="row">
           <div class="col-md-12 text-right">
             <%= link_to 'Add Squad', new_mission_squad_path(@mission), class: 'btn btn-primary' %>
           </div>
         </div>
 
-        </br>    
+        </br>
 
         <div>
           <%= link_to 'Edit', edit_mission_path(@mission) %> |
