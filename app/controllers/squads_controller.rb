@@ -71,8 +71,7 @@ class SquadsController < ApplicationController
     def squad_params
       params.require(:squad).permit(
         :name,
-        :leader_id,
-        crew_ids: []
+        :leader_id        
       )
     end
 end

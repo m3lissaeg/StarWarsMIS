@@ -70,7 +70,7 @@ class MissionsController < ApplicationController
         :details,
         :status,
         :commander_id,
-        :location_id,
-        squad_ids: [])
+        :location_id
+      )
     end
 end
