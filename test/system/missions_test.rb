@@ -27,7 +27,7 @@ class MissionsTest < ApplicationSystemTestCase
     page.select "September", from: "mission_end_date_2i"
     page.select "8", from: "mission_end_date_3i"
 
-    page.select "planning", from: "mission_status"
+    page.select "Planning", from: "mission_status"
     click_on "Submit"
 
     assert_text "Mission was successfully created"
@@ -53,7 +53,7 @@ class MissionsTest < ApplicationSystemTestCase
     page.select "November", from: "mission_end_date_2i"
     page.select "8", from: "mission_end_date_3i"
 
-    page.select "success", from: "mission_status"
+    page.select "Success", from: "mission_status"
     click_on "Submit"
 
     assert_text "Mission was successfully updated"
