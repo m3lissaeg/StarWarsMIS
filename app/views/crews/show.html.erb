@@ -1,0 +1,69 @@
+<%= render 'layouts/notice' %>
+
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Crew</h3>
+    </div>
+
+    <div class="card-body">  
+      <div class="container">
+        <div class="row"> 
+          <div class="col">
+            <p>
+              <strong>Name:</strong>
+              <%= @crew.name %>
+            </p>
+          </div>
+          
+          <div class="col">  
+            <p>   
+              <strong>Ship:</strong>
+              <%= @crew.ship.name %> 
+            </p>              
+          </div>
+
+          <div class="col">  
+            <p>   
+              <strong>Droids:</strong>
+              <%= @crew.droids.pluck(:name).join(', ') %>
+            </p>              
+          </div>
+
+        </div>
+
+        <div class="row"> 
+          <div class="col">  
+            <p>   
+              <strong>Rebels:</strong>
+              <%= @crew.rebels.pluck(:name).join(', ') %>
+            </p>              
+          </div>
+        </div>
+
+
+        <div class="row"> 
+          <div class="col">  
+            <p>   
+              <strong>Passengers:</strong>
+              <%= @crew.passengers.pluck(:name).join(', ') %>
+            </p>              
+          </div>
+        </div>
+        
+        <div> 
+          <%= link_to 'Edit', edit_mission_squad_crew_path(@mission, @squad, @crew) %> |
+          <%= link_to 'Back', mission_squad_crews_path(@mission, @squad) %>
+        </div>
+
+        <div> 
+          <%= link_to 'Back to Mission', mission_path(@mission) %>
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>

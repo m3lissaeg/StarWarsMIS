@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+yavinfour:
+  id: 1
+  start_date: 2021-09-03
+  end_date: 2021-09-03
+  details: The first Death Star has been destroyed. But the Empire remains. 
+           An Imperial cruiser has landed on Yavin Four. The Rebel base is threatened. 
+           The mission is to prevent the assault on Yavin Four…at any cost.
+  status: 1
+  commander_id: 1
+  location_id: 1
+
+thyferra:
+  id: 2
+  start_date: 2021-09-03
+  end_date: 2021-09-03
+  details: Escape from Thyferra. The Rebel forces have found an Imperial 
+           conspiracy involving contaminated bacta, a deadly substance that 
+           can poison entire planets. In order to stop the Empire, the Rebels 
+           travel to Thyferra…where they are trapped by a squadron of 
+           stormtroopers! Escape from Thyferra… before it's too late.
+  status: 1
+  commander_id: 2
+  location_id: 2

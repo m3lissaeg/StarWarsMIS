@@ -1,0 +1,84 @@
+<% if mission.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div class="card-body">
+      <h5>
+      <%= pluralize(mission.errors.count, "error") %>
+      prohibited this mission from being saved: </h5>
+
+      <ul>
+        <% mission.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<%= form_with(model: mission) do |form| %>
+  <div class="container">
+    </br>
+
+    <div class="row">
+      <div class="col">
+        <label for="commander">Select the Commander for this Mission: </label>
+        <%= form.collection_select :commander_id, User.order(:name), :id, :name,
+            {include_blank: false}, {class: 'form-select form-select'} %>
+      </div>
+
+      <div class="col">
+        <label for="location">Select the Location: </label>
+        <%= form.collection_select :location_id, Location.order(:system), :id, :system,
+            {include_blank: false}, {class: 'form-select form-select'} %>
+      </div>
+
+    </div>
+
+    </br>
+
+    <div class="form-group row">
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :start_date %>
+          <%= form.date_select :start_date ,{include_blank: false}, {class: 'form-select-sm'} %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :end_date %>
+          <%= form.date_select :end_date ,{include_blank: false}, {class: 'form-select-sm'} %>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :details %>
+          <%= form.text_area :details , class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <%= form.label :status %>
+          <%= form.select :status, Mission.statuses.keys.map{ |key| [key.humanize, key] }, {}, class:'form-select' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <div class="actions">
+          <%= form.submit "Submit" , class: 'btn btn-primary' %>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+<% end %>

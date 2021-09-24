@@ -1,0 +1,80 @@
+<%= render 'layouts/notice' %>
+
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Mission</h3>
+    </div>
+
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>
+              <strong>Commander:</strong>
+              <%= @mission.commander.name %>
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              <strong>Location:</strong>
+              <%= @mission.location.system %>
+            </p>
+          </div>
+
+          <div class="col">
+            <p>
+              <strong>Status:</strong>
+              <%= @mission.status.humanize %>
+            </p>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <p>
+            <strong>Start date:</strong>
+            <%= @mission.start_date %>
+          </p>
+          <p>
+            <strong>End date:</strong>
+            <%= @mission.end_date %>
+          </p>
+        </div>
+
+        <div class="row">
+          <p>
+            <strong>Details:</strong>
+            <%= @mission.details %>
+          </p>
+        </div>
+
+        </br>
+
+        <div class="row">
+          <strong>Squads</strong>
+          <%= render partial: 'squads/squad_list',
+                     locals: { squads: @mission.squads, mission: @mission } %>
+
+        </br>
+
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <%= link_to 'Add Squad', new_mission_squad_path(@mission), class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+        </br>
+
+        <div>
+          <%= link_to 'Edit', edit_mission_path(@mission) %> |
+          <%= link_to 'Back', missions_path %>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

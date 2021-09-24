@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_211439) do
+ActiveRecord::Schema.define(version: 2021_09_14_222639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crews", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "ship_id"
+    t.bigint "squad_id"
+    t.index ["ship_id"], name: "index_crews_on_ship_id"
+    t.index ["squad_id"], name: "index_crews_on_squad_id"
+  end
+
+  create_table "crews_droids", force: :cascade do |t|
+    t.integer "crew_id"
+    t.integer "droid_id"
+  end
+
+  create_table "crews_passengers", force: :cascade do |t|
+    t.integer "crew_id"
+    t.integer "user_id"
+  end
+
+  create_table "crews_rebels", force: :cascade do |t|
+    t.integer "crew_id"
+    t.integer "user_id"
+  end
 
   create_table "droids", force: :cascade do |t|
     t.string "name"
@@ -30,11 +55,34 @@ ActiveRecord::Schema.define(version: 2021_08_10_211439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "missions", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.text "details"
+    t.integer "status"
+    t.bigint "commander_id"
+    t.bigint "location_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commander_id"], name: "index_missions_on_commander_id"
+    t.index ["location_id"], name: "index_missions_on_location_id"
+  end
+
   create_table "ships", force: :cascade do |t|
     t.string "name"
     t.text "features"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "squads", force: :cascade do |t|
+    t.string "name"
+    t.bigint "leader_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "mission_id"
+    t.index ["leader_id"], name: "index_squads_on_leader_id"
+    t.index ["mission_id"], name: "index_squads_on_mission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,4 +106,10 @@ ActiveRecord::Schema.define(version: 2021_08_10_211439) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "crews", "ships"
+  add_foreign_key "crews", "squads"
+  add_foreign_key "missions", "locations"
+  add_foreign_key "missions", "users", column: "commander_id"
+  add_foreign_key "squads", "missions"
+  add_foreign_key "squads", "users", column: "leader_id"
 end

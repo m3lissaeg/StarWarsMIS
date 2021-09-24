@@ -1,0 +1,30 @@
+<div class="col-lg-12 mb-4">
+
+  <%= render 'layouts/notice' %>
+
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">
+        Squads for <%= link_to "Mission #{@mission.id}", @mission, target: :_blank %>
+      </h3>
+      <h5>With details: <%= @mission.details %></h5>
+    </div>
+
+    <div class="card-body">
+      <div class="container">
+        <small class="form-text text-muted">
+          Click "Show" to see all details about the Leader and the Crews for this Squad
+        </small>
+      </div>
+      </br>
+
+      <%= render partial: 'squad_list',
+                 locals: { squads: @squads, mission: @mission } %>
+
+      <br>
+
+      <%= link_to 'New Squad', new_mission_squad_path(@mission) %>
+    </div>
+
+  </div>
+</div>

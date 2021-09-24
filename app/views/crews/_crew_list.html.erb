@@ -1,0 +1,34 @@
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th>Name    </th>
+        <th>Ship    </th>
+        <th>Droids  </th>
+        <th>Actions </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% crews.each do |crew| %>
+        <tr>
+          <td><%= crew.name %></td>
+          <td>
+            <%= crew.ship.name %>
+          </td>
+          
+          <td>
+            <%= crew.droids.pluck(:name).join(', ') %>
+          </td>
+
+
+          <td>
+              <%= link_to 'Show', [mission, squad, crew]  %> <span>  |  </span>
+              <%= link_to 'Edit', edit_mission_squad_crew_path(mission, squad, crew) %> <span>  |  </span>
+              <%= link_to 'Destroy', [mission, squad, crew], method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

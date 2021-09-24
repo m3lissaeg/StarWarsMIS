@@ -1,0 +1,53 @@
+<%= render 'layouts/notice' %>
+
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">Squad</h3>
+    </div>
+
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>
+              <strong>Name:</strong>
+              <%= @squad.name %>
+            </p>
+          </div>
+
+          <div class="col">
+            <p>
+              <strong>Leader:</strong>
+              <%= @squad.leader.name %>
+            </p>
+          </div>
+
+        </div>
+
+        
+        <div class="row">
+          <strong>Crews </strong>
+
+          <%= render partial:'crews/crew_list', 
+          locals: { mission: @mission, squad: @squad, crews: @squad.crews } %>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 text-right">
+            <%= link_to 'Add Crew', new_mission_squad_crew_path(@mission, @squad), class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+        <div>
+          <%= link_to 'Edit', edit_mission_squad_path(@mission, @squad) %> |
+          <%= link_to 'Back', mission_squads_path(@mission) %>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

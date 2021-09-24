@@ -1,0 +1,83 @@
+<% if crew.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div class="card-body">
+      <h5><%= pluralize(crew.errors.count, "error") %> 
+      prohibited this crew from being saved:</h5>
+
+      <ul>
+        <% crew.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+
+<%= form_with(model: [@mission, @squad, crew]) do |form| %>
+  
+  <div class="container">
+    <div class="row">
+      <small class="form-text text-muted">
+        Use Ctrl/Cmd or Shift to select multiple Droids, Rebels and Passengers for this Crew
+      </small>
+    </div>
+    </br>
+
+    <div class="row">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name , class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="ship">Select the ship for this Crew</label>
+          <%= form.collection_select :ship_id, Ship.order(:name), :id, :name, 
+              {include_blank: false}, {class: 'form-select form-select-sm'} %>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="droid">Select Droids: </label>
+          <%= form.collection_select :droid_ids, Droid.order(:name), :id, :name, {include_blank: false}, 
+            {class: 'form-select form-select-sm',size: '4',:multiple => true }  %>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col form-check">
+        <label for="rebels">Select Rebels: </label>
+        <%= form.collection_select :rebel_ids, User.order(:name), :id, :name, {include_blank: false}, 
+          {class: 'form-select form-select-sm',size: '4',:multiple => true }  %>
+      </div>
+
+      <div class="col form-check">
+        <label for="rebels">Select Passengers: </label>
+        <%= form.collection_select :passenger_ids, User.order(:name), :id, :name, {include_blank: false}, 
+          {class: 'form-select form-select-sm', size: '4', :multiple => true }  %>
+      </div>
+    </div>
+
+    </br>
+
+    <div class="row">
+      <div class="col-2">
+        <div class="actions">
+          <%= form.submit "Submit" , class: 'btn btn-primary' %>
+        </div>
+
+        <%= link_to 'Back', mission_squad_crews_path(@mission, @squad) %>
+      </div>
+      
+    </div>
+
+  </div>
+  
+<% end %>

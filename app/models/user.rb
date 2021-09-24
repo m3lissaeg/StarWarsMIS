@@ -7,4 +7,10 @@ class User < ApplicationRecord
   validates :name,  presence: true
   validates :phone,  presence: true, length: { maximum: 100 }
   validates :email,  presence: true
+
+  has_and_belongs_to_many :crews_as_rebel, class_name: "Crew", join_table: :crews_rebels
+  has_and_belongs_to_many :crews_as_passenger, class_name: "Crew", join_table: :crews_passengers
+
+  has_many :squads, foreign_key: "leader_id"
+  has_many :missions, foreign_key: "commander_id"
 end
