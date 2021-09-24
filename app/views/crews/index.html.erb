@@ -8,9 +8,23 @@
         Crews for <%= link_to "Squad #{@squad.name}", mission_squad_path(@mission, @squad), target: :_blank %>
       </h3>
     </div>
-    
-    <%= render partial:'crew_list', 
-               locals: { mission: @mission, squad: @squad, crews: @crews } %>
 
+    <div class="card-body">   
+      <div class="container">
+        <div class="row">
+          <small class="form-text text-muted">
+            Click "Show" to see all details about Droids, Rebels and Passengers for this Crew
+          </small>
+        </div>
+      </div>
+      </br>
+      <%= render partial:'crew_list', 
+      locals: { mission: @mission, squad: @squad, crews: @crews } %>
+      </br>
+      </br>      
+
+      <%= link_to 'New Crew', new_mission_squad_crew_path(@mission, @squad) %>
+    </div>
+    
   </div>
 </div>
