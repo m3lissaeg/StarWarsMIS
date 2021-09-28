@@ -7,19 +7,19 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get mission_squads_url(@mission)
     assert_response :success
   end
 
   test "should get new" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get new_mission_squad_url(@mission)
     assert_response :success
   end
 
   test "should create squad" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     assert_difference('Squad.count') do
       post mission_squads_url(@mission), params: { squad: { name: "Name of the Squad",
                                         leader_id: 1
@@ -31,19 +31,19 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show squad" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get mission_squad_url(@mission, @squad)
     assert_response :success
   end
 
   test "should get edit" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get edit_mission_squad_url(@mission, @squad)
     assert_response :success
   end
 
   test "should update squad" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     patch mission_squad_url(@mission, @squad), params: { squad: { name: "New fansy name",
                                               leader_id: "2"
                                             } }
@@ -51,7 +51,7 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy squad" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     assert_difference('Squad.count', -1) do
       delete mission_squad_url(@mission, @squad)
     end

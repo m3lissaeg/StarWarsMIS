@@ -6,11 +6,13 @@ class ShipsTest < ApplicationSystemTestCase
   end
   
   test "visiting the index" do
+    sign_in users(:rey)
     visit ships_url
     assert_selector "h3", text: "Ships"
   end
   
   test "creating a Ship" do
+    sign_in users(:rey)
     visit ships_url
     click_on "New Ship"
     
@@ -29,6 +31,7 @@ class ShipsTest < ApplicationSystemTestCase
   end
   
   test "updating a Ship" do
+    sign_in users(:rey)
     visit ships_url
     click_on "Edit", match: :first
     fill_in "Features", with: "New Features"
@@ -42,6 +45,7 @@ class ShipsTest < ApplicationSystemTestCase
   end
   
   test "destroying a Ship" do
+    sign_in users(:rey)
     visit ships_url
     page.accept_confirm do
       click_on "Destroy", match: :first

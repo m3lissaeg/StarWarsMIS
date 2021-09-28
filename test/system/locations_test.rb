@@ -6,11 +6,13 @@ class LocationsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    sign_in users(:rey)
     visit locations_url
     assert_selector "h3", text: "Locations"
   end
 
   test "creating a Location" do
+    sign_in users(:rey)
     visit locations_url
     click_on "New Location"
 
@@ -29,6 +31,7 @@ class LocationsTest < ApplicationSystemTestCase
   end
 
   test "updating a Location" do
+    sign_in users(:rey)
     visit locations_url
     click_on "Edit", match: :first
     fill_in "Coord", with: "New coord"
@@ -43,6 +46,7 @@ class LocationsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Location" do
+    sign_in users(:rey)
     visit locations_url
     page.accept_confirm do
       click_on "Destroy", match: :first

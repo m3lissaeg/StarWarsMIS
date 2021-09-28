@@ -6,19 +6,19 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get missions_url
     assert_response :success
   end
 
   test "should get new" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get new_mission_url
     assert_response :success
   end
 
   test "should create mission" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     assert_difference('Mission.count') do
       post missions_url, params: { mission: { commander_id: 2, 
                                             details: @mission.details, 
@@ -34,19 +34,19 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show mission" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get mission_url(@mission)
     assert_response :success
   end
 
   test "should get edit" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     get edit_mission_url(@mission)
     assert_response :success
   end
 
   test "should update mission" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     patch mission_url(@mission), params: { mission: { commander_id: @mission.commander_id, 
                                                     details: "New details for this mission", 
                                                     end_date: @mission.end_date, 
@@ -59,7 +59,7 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy mission" do
-    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    sign_in users(:rey)
     assert_difference('Mission.count', -1) do
       delete mission_url(@mission)
     end

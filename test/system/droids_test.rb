@@ -6,11 +6,13 @@ class DroidsTest < ApplicationSystemTestCase
   end
   
   test "visiting the index" do
+    sign_in users(:rey)
     visit droids_url
     assert_selector "h3", text: "Droids"
   end
   
   test "creating a Droid" do
+    sign_in users(:rey)
     visit droids_url
     click_on "New Droid"
     
@@ -32,6 +34,7 @@ class DroidsTest < ApplicationSystemTestCase
   end
   
   test "updating a Droid" do
+    sign_in users(:rey)
     visit droids_url
     click_on "Edit", match: :first
     fill_in "Features", with: "New features"
@@ -48,6 +51,7 @@ class DroidsTest < ApplicationSystemTestCase
   end
   
   test "destroying a Droid" do
+    sign_in users(:rey)
     visit droids_url
     page.accept_confirm do
       click_on "Destroy", match: :first

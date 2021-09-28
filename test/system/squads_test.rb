@@ -8,11 +8,13 @@ class SquadsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    sign_in users(:rey)
     visit mission_squads_url(@mission)
     assert_selector "h3", text: "Squads for Mission 1"
   end
 
   test "creating a Squad" do
+    sign_in users(:rey)
     visit mission_squads_url(@mission)
     click_on "New Squad"
 
@@ -25,6 +27,7 @@ class SquadsTest < ApplicationSystemTestCase
   end
 
   test "updating a Squad" do
+    sign_in users(:rey)
     visit mission_squads_url(@mission)
     click_on "Edit", match: :first
 
@@ -37,6 +40,7 @@ class SquadsTest < ApplicationSystemTestCase
   end
 
   test "adding a Crew to a Squad" do
+    sign_in users(:rey)
     visit mission_squads_url(@mission)
     click_on "Show", match: :first
     click_on "Add Crew"
@@ -53,6 +57,7 @@ class SquadsTest < ApplicationSystemTestCase
 
 
   test "destroying a Squad" do
+    sign_in users(:rey)
     visit mission_squads_url(@mission)
     page.accept_confirm do
       click_on "Destroy", match: :first

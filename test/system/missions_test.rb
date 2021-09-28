@@ -7,11 +7,13 @@ class MissionsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    sign_in users(:rey)
     visit missions_url
     assert_selector "h3", text: "Missions"
   end
 
   test "creating a Mission" do
+    sign_in users(:rey)
     visit missions_url
     click_on "New Mission"
 
@@ -38,6 +40,7 @@ class MissionsTest < ApplicationSystemTestCase
   end
 
   test "updating a Mission" do
+    sign_in users(:rey)
     visit missions_url
     click_on "Edit", match: :first
 
@@ -63,6 +66,7 @@ class MissionsTest < ApplicationSystemTestCase
   end
 
   test "Adding a Squad to a Mission" do
+    sign_in users(:rey)
     visit missions_url
     click_on "Show", match: :first
     click_on "Add Squad"
@@ -76,6 +80,7 @@ class MissionsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Mission" do
+    sign_in users(:rey)
     visit missions_url
     page.accept_confirm do
       click_on "Destroy", match: :first
