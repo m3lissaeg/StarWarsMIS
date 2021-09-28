@@ -3,6 +3,9 @@
 </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
   <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-user' %>
@@ -27,4 +30,3 @@
 <% end %>
 </br>
 <%= render "devise/shared/links" %>
-

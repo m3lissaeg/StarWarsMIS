@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :droids
   resources :ships
   resources :locations
-  root to: "ships#index"
+  root to: "missions#index"
 end

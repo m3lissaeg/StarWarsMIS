@@ -8,11 +8,14 @@ class CrewsTest < ApplicationSystemTestCase
   end
 
   test "visiting the index" do
+    login_as(users(:rey), :scope => :user, :run_callbacks => false)
     visit mission_squad_crews_url(@mission, @squad)
     assert_selector "h3", text: "Crews"
   end
 
   test "creating a Crew" do
+    login_as(users(:rey), :scope => :user, :run_callbacks => false)
+    
     visit mission_squad_crews_url(@mission, @squad)
     click_on "New Crew"
 
@@ -27,6 +30,7 @@ class CrewsTest < ApplicationSystemTestCase
   end
 
   test "updating a Crew" do
+    login_as(users(:rey), :scope => :user, :run_callbacks => false)
     visit mission_squad_crews_url(@mission, @squad)
     click_on "Edit", match: :first
 
@@ -50,6 +54,7 @@ class CrewsTest < ApplicationSystemTestCase
   end
 
   test "destroying a Crew" do
+    login_as(users(:rey), :scope => :user, :run_callbacks => false)
     visit mission_squad_crews_url(@mission, @squad)
     page.accept_confirm do
       click_on "Destroy", match: :first
