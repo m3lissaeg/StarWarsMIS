@@ -8,7 +8,7 @@ rey:
   rank: master
   jedi: true
   admin: true
-  confirmed_at: <%= Time.now %>
+  confirmed_at: <%= Time.current %>
 
 luke:
   id: 2
@@ -18,4 +18,4 @@ luke:
   rank: master  
   jedi: true
   admin: false
-  confirmed_at: <%= Time.now %>
+  confirmed_at: <%= Time.current %>

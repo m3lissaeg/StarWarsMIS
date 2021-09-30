@@ -25,9 +25,12 @@
                 <td><%= location.system %></td>
                 <td><%= location.coord %></td>
                 <td>
-                  <%= link_to 'Show', location %> <span>  |  </span>
-                  <%= link_to 'Edit', edit_location_path(location) %> <span>  |  </span>
-                  <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Show', location %> 
+                  <% if current_user.admin? %>
+                    <span>  |  </span>
+                    <%= link_to 'Edit', edit_location_path(location) %> <span>  |  </span>
+                    <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
@@ -37,7 +40,7 @@
             
       <br>
             
-      <%= link_to 'New Location', new_location_path %>
+      <%= link_to 'New Location', new_location_path if current_user.admin? %>
     </div>
     
 

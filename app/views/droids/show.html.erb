@@ -22,8 +22,10 @@
         <strong>Features:</strong>
         <%= @droid.features %>
       </p>
-
-      <%= link_to 'Edit', edit_droid_path(@droid) %> |
+      
+      <% if current_user.admin? %>
+        <%= link_to 'Edit', edit_droid_path(@droid) %> |
+      <% end %>
       <%= link_to 'Back', droids_path %>
     </div>
   </div>

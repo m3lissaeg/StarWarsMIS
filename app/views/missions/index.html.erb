@@ -35,9 +35,12 @@
                 <td><%= mission.commander.name %></td>
 
                 <td>
-                    <%= link_to 'Show', mission %> <span>  |  </span>
-                    <%= link_to 'Edit', edit_mission_path(mission) %> <span>  |  </span>
-                    <%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <%= link_to 'Show', mission %> 
+                    <% if current_user.admin? %>
+                      <span>  |  </span>
+                      <%= link_to 'Edit', edit_mission_path(mission) %> <span>  |  </span>
+                      <%= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
                 </td>
               </tr>
             <% end %>            
@@ -48,7 +51,7 @@
     
       <br>
 
-      <%= link_to 'New Mission', new_mission_path %>
+      <%= link_to 'New Mission', new_mission_path if current_user.admin? %>
     </div>
 
   </div>

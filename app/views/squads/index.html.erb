@@ -23,7 +23,7 @@
 
       <br>
 
-      <%= link_to 'New Squad', new_mission_squad_path(@mission) %>
+      <%= link_to 'New Squad', new_mission_squad_path(@mission) if current_user.admin? %>
     </div>
 
   </div>

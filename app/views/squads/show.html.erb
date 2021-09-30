@@ -36,12 +36,15 @@
 
         <div class="row">
           <div class="col-md-12 text-right">
-            <%= link_to 'Add Crew', new_mission_squad_crew_path(@mission, @squad), class: 'btn btn-primary' %>
+            <%= link_to 'Add Crew', new_mission_squad_crew_path(@mission, @squad), 
+                                    class: 'btn btn-primary' if current_user.admin? %>
           </div>
         </div>
 
         <div>
-          <%= link_to 'Edit', edit_mission_squad_path(@mission, @squad) %> |
+          <% if current_user.admin? %>
+            <%= link_to 'Edit', edit_mission_squad_path(@mission, @squad) %> |
+          <% end %>
           <%= link_to 'Back', mission_squads_path(@mission) %>
         </div>
 

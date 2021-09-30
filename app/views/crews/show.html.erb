@@ -52,12 +52,14 @@
         </div>
         
         <div> 
-          <%= link_to 'Edit', edit_mission_squad_crew_path(@mission, @squad, @crew) %> |
-          <%= link_to 'Back', mission_squad_crews_path(@mission, @squad) %>
+          <% if current_user.admin? %>
+            <%= link_to 'Edit', edit_mission_squad_crew_path(@mission, @squad, @crew) %> |
+          <% end %>
+            <%= link_to 'Back', mission_squad_crews_path(@mission, @squad) %>
         </div>
 
         <div> 
-          <%= link_to 'Back to Mission', mission_path(@mission) %>
+          <%= link_to 'Back to Mission', mission_path(@mission) if current_user.admin? %>
         </div>
 
         

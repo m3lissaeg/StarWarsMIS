@@ -1,9 +1,16 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: %i[ show edit update destroy ]
+  before_action only: %i[ new edit create update destroy ] do
+    render_not_found unless current_user && current_user.admin
+  end
 
   # GET /missions or /missions.json
   def index
-    @missions = Mission.all
+    if current_user.admin?
+      @missions = Mission.all
+    else
+      @missions = current_user.missions
+    end
   end
 
   # GET /missions/1 or /missions/1.json

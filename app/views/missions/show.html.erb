@@ -61,14 +61,16 @@
 
         <div class="row">
           <div class="col-md-12 text-right">
-            <%= link_to 'Add Squad', new_mission_squad_path(@mission), class: 'btn btn-primary' %>
+            <%= link_to 'Add Squad', new_mission_squad_path(@mission), class: 'btn btn-primary' if current_user.admin? %>
           </div>
         </div>
 
         </br>
 
         <div>
-          <%= link_to 'Edit', edit_mission_path(@mission) %> |
+          <% if current_user.admin? %>
+            <%= link_to 'Edit', edit_mission_path(@mission) %> |
+          <% end %>
           <%= link_to 'Back', missions_path %>
         </div>
 

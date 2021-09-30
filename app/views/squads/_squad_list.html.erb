@@ -23,9 +23,12 @@
 
 
           <td>
-              <%= link_to 'Show', [mission, squad] %> <span>  |  </span>
-              <%= link_to 'Edit', edit_mission_squad_path(mission, squad) %> <span>  |  </span>
-              <%= link_to 'Destroy', [mission, squad], method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Show', [mission, squad] %> 
+              <% if current_user.admin? %>
+                <span>  |  </span>
+                <%= link_to 'Edit', edit_mission_squad_path(mission, squad) %> <span>  |  </span>
+                <%= link_to 'Destroy', [mission, squad], method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
           </td>
         </tr>
       <% end %>

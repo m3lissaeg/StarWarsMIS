@@ -25,9 +25,12 @@
                 <td><%= ship.name %></td>
                 <td><%= ship.features %></td>
                 <td>
-                  <%= link_to 'Show', ship %> <span>  |  </span>
-                  <%= link_to 'Edit', edit_ship_path(ship) %> <span>  |  </span>
-                  <%= link_to 'Destroy', ship, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Show', ship %> 
+                  <% if current_user.admin? %>
+                    <span>  |  </span>
+                    <%= link_to 'Edit', edit_ship_path(ship) %> <span>  |  </span>
+                    <%= link_to 'Destroy', ship, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
@@ -36,7 +39,7 @@
       </div>
       <br>
 
-      <%= link_to 'New Ship', new_ship_path %>
+      <%= link_to 'New Ship', new_ship_path if current_user.admin? %>
     </div>
   </div>
 </div>
