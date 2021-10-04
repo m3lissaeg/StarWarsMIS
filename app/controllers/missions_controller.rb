@@ -1,8 +1,5 @@
 class MissionsController < ApplicationController
   before_action :set_mission, only: %i[ show edit update destroy ]
-  before_action only: %i[ new edit create update destroy ] do
-    render_not_found unless current_user && current_user.admin
-  end
 
   # GET /missions or /missions.json
   def index
@@ -15,6 +12,8 @@ class MissionsController < ApplicationController
 
   # GET /missions/1 or /missions/1.json
   def show
+    redirect_to "static_pages#error404" unless current_user && 
+    (current_user.admin || @mission.commander == current_user )
   end
 
   # GET /missions/new
@@ -66,7 +65,8 @@ class MissionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
-      @mission = Mission.find(params[:id])
+      @mission = Mission.find_by(id: params[:id])
+      redirect_to controller: :static_pages, action: :error404 if @mission.nil?
     end
 
     # Only allow a list of trusted parameters through.

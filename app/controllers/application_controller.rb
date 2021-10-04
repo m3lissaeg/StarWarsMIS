@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :authenticate_user!
 
-  def render_not_found
-    render file: "public/404.html",  status: 404
+  before_action only: %i[ new edit create update destroy ] do
+    redirect_to "static_pages#error404" unless 
+    :devise_controller? || (current_user && current_user.admin) 
   end
 
   protected

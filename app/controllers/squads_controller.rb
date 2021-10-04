@@ -60,11 +60,13 @@ class SquadsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
-      @mission = Mission.find(params[:mission_id])
+      @mission = Mission.find_by(id: params[:mission_id])
+      redirect_to controller: :static_pages, action: :error404 if @mission.nil?
     end
 
     def set_squad
-      @squad = @mission.squads.find(params[:id])
+      @squad = @mission.squads.find_by(id: params[:id])
+      redirect_to controller: :static_pages, action: :error404 if @squad.nil?
     end
 
     # Only allow a list of trusted parameters through.

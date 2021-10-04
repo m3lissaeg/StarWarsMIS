@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :ships
   resources :locations
   root to: "missions#index"
+  
+  get "/error404", to: "static_pages#error404"
 end
