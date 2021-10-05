@@ -12,6 +12,19 @@ class MissionsTest < ApplicationSystemTestCase
     assert_selector "h3", text: "Missions"
   end
 
+  test "admin user visiting index" do
+    sign_in users(:rey)
+    visit missions_url
+    assert_selector "td", {count: missions.count, text: "Show"}
+  end
+
+  test "not admin user visiting index" do
+    sign_in users(:luke)
+    visit missions_url
+    assert_no_selector "a", text: "New Mission"
+    assert_selector "td", {count: users(:luke).missions.count, text: "Show"}
+  end
+
   test "creating a Mission" do
     sign_in users(:rey)
     visit missions_url

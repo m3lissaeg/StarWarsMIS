@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   before_action only: %i[ new edit create update destroy ] do
-    redirect_to "static_pages#error404" unless 
-    :devise_controller? || (current_user && current_user.admin) 
+    if !devise_controller?
+      redirect_to controller: :static_pages, action: :error404  unless current_user && current_user.admin 
+    end
   end
 
   protected

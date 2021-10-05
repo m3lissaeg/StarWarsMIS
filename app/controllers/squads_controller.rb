@@ -4,11 +4,17 @@ class SquadsController < ApplicationController
 
   # GET /missions/:mission_id/squads or /missions/:mission_id/squads.json
   def index
-    @squads = @mission.squads
+    if @mission.nil?
+      redirect_to controller: :static_pages, action: :error404 
+    else
+      @squads = @mission.squads
+    end
   end
 
   # GET /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def show
+    redirect_to controller: :static_pages, action: :error404 unless current_user && 
+    (current_user.admin || @squad.id.in?(@mission.squads.ids) )
   end
 
   # GET /missions/:mission_id/squads/new
@@ -22,46 +28,54 @@ class SquadsController < ApplicationController
 
   # POST /missions/:mission_id/squads or /missions/:mission_id/squads.json
   def create
-    @squad = @mission.squads.build(squad_params)
+    if current_user.admin?
+      @squad = @mission.squads.build(squad_params)
 
-    respond_to do |format|
-      if @squad.save
-        format.html { redirect_to [@mission, @squad], notice: "Squad was successfully created." }
-        format.json { render :show, status: :created, location: [@mission, @squad] }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @squad.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @squad.save
+          format.html { redirect_to [@mission, @squad], notice: "Squad was successfully created." }
+          format.json { render :show, status: :created, location: [@mission, @squad] }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @squad.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # PATCH/PUT /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def update
-    respond_to do |format|
-      if @squad.update(squad_params)
-        format.html { redirect_to [@mission, @squad], notice: "Squad was successfully updated." }
-        format.json { render :show, status: :ok, location: [@mission, @squad] }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @squad.errors, status: :unprocessable_entity }
+    if current_user.admin?
+      respond_to do |format|
+        if @squad.update(squad_params)
+          format.html { redirect_to [@mission, @squad], notice: "Squad was successfully updated." }
+          format.json { render :show, status: :ok, location: [@mission, @squad] }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @squad.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # DELETE /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def destroy
-    @squad.destroy
-    respond_to do |format|
-      format.html { redirect_to mission_squads_url(@mission), notice: "Squad was successfully destroyed." }
-      format.json { head :no_content }
+    if current_user.admin?
+      @squad.destroy
+      respond_to do |format|
+        format.html { redirect_to mission_squads_url(@mission), notice: "Squad was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
-      @mission = Mission.find_by(id: params[:mission_id])
-      redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+      # if params[:mission_id].in?(current_user.missions.ids) || current_user.admin?
+        @mission = Mission.find_by(id: params[:mission_id])
+        redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+      # end
     end
 
     def set_squad

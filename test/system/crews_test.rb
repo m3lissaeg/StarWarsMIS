@@ -13,6 +13,12 @@ class CrewsTest < ApplicationSystemTestCase
     assert_selector "h3", text: "Crews"
   end
 
+  test "not admin user visiting the index" do
+    sign_in users(:luke)
+    visit mission_squad_crews_url(@mission, @squad)
+    assert_no_selector "a", text: "Add Crew"
+  end
+
   test "creating a Crew" do
     sign_in users(:rey)
     
