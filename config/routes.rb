@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users', to: "users#index"
   resources :missions do
     resources :squads do
       resources :crews
