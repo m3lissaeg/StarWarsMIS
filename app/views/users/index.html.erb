@@ -16,6 +16,7 @@
               <th>Name</th>
               <th>E-mail</th>
               <th>Phone </th>
+              <th>Actions </th>
             </tr>
           </thead>
 
@@ -25,12 +26,26 @@
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
                 <td><%= user.phone %></td>
+                <td>
+                    <%= link_to 'Show', user %> 
+                    <% if current_user.admin? %>
+                      <span>  |  </span>
+                      <%= link_to 'Edit', edit_user_path(user) %> <span>  |  </span>
+                      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
       <br>
+
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <%= link_to 'Add User', new_user_path, class: 'btn btn-primary' if current_user.admin? %>
+        </div>
+      </div>
 
     </div>
   </div>

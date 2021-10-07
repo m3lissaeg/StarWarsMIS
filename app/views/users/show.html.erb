@@ -1,0 +1,53 @@
+<%= render 'layouts/notice' %>
+
+<div class="col-lg-12 mb-4">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h3 class="m-0 font-weight-bold text-primary">User</h3>
+    </div>
+
+    <div class="card-body">   
+      <div class="row">
+        <div class="col">
+          <p>
+            <strong>Name:</strong>
+            <%= @user.name %>
+          </p>
+        </div>
+
+        <div class="col">
+          <p>
+            <strong>E-mail:</strong>
+            <%= @user.email %>
+          </p>
+        </div>
+
+        <div class="col">
+          <p>
+            <strong>Rank:</strong>
+            <%= @user.rank %>
+          </p>
+        </div>
+
+        <% if @user.jedi? %>
+          <div class="col">
+            Jedi
+          </div>
+        <% end %>
+
+        <% if @user.admin? %>
+          <div class="col">
+            Administrator
+          </div>
+        <% end %>
+      </div>
+
+      <% if current_user.admin? %>
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+      <% end %>
+      <%= link_to 'Back', users_path %>
+
+    </div>
+  </div>
+</div>
+
