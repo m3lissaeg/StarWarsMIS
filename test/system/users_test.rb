@@ -50,15 +50,18 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
     
     fill_in "Name", with: "New Name"
-    fill_in "Email", with:"user@g.gg"
-    fill_in "Phone", with:"1111111"
+    fill_in "Phone", with: "1111111"
     fill_in "Rank", with: "rank"
+    check 'user_jedi'
+    check 'user_admin'
     fill_in "Password", with: "ThisIsaS4feP4$$123"
     fill_in "Password confirmation", with: "ThisIsaS4feP4$$123"
     click_on "Submit"
-    
     # Info filled and saved by the user should be equal to what is stored in DB
-    assert_text "User was successfully updated"
+
+    assert_equal "New Name", User.order('id ASC').first.name
+    assert_equal "1111111", User.order('id ASC').first.phone
+    assert_equal "rank", User.order('id ASC').first.rank
   end
 
   test "destroying a user" do
