@@ -76,26 +76,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should destroy user if user is admin" do
-    sign_in users(:rey)
-    assert_difference('User.count', -1) do
-      delete user_url(@user)
-    end
-
-    assert_redirected_to users_url
-  end
-
-  test "should not destroy user if user is not admin" do
-    sign_in users(:luke)
-    assert_no_difference('User.count') do
-      delete user_url(@user)
-    end
-  end
-
-  test "should not destroy user if user is not logged in" do
-    assert_no_difference('User.count') do
-      delete user_url(@user)
-    end
-  end
-
 end

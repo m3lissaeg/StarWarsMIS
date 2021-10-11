@@ -32,7 +32,7 @@
                 <td><%= mission.start_date %></td>
                 <td><%= mission.end_date %></td>
                 <td><%= mission.status.humanize %></td>
-                <td><%= mission.commander.name %></td>
+                <td><%= mission.commander.nil? ? "No commander assigned" : mission.commander.name %></td>
 
                 <td>
                     <%= link_to 'Show', mission %> 

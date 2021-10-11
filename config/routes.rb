@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :droids
   resources :ships
   resources :locations
-  resources :users
+  resources :users, except: [:destroy]
   root to: "missions#index"
   
   get "/error404", to: "static_pages#error404"

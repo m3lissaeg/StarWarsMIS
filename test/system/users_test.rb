@@ -64,13 +64,5 @@ class UsersTest < ApplicationSystemTestCase
     assert_equal "rank", User.order('id ASC').first.rank
   end
 
-  test "destroying a user" do
-    sign_in users(:rey)
-    visit users_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-  end
-  
 end
 

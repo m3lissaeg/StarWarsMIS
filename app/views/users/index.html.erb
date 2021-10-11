@@ -30,8 +30,7 @@
                     <%= link_to 'Show', user %> 
                     <% if current_user.admin? %>
                       <span>  |  </span>
-                      <%= link_to 'Edit', edit_user_path(user) %> <span>  |  </span>
-                      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <%= link_to 'Edit', edit_user_path(user) %> 
                     <% end %>
                 </td>
               </tr>
