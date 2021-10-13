@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   before_action :authenticate_user!
 
-  before_action only: %i[ new edit create update destroy ] do
+  before_action :user_is_admin, only: %i[ new edit create update destroy ]
+
+  def user_is_admin
     if !devise_controller?
       redirect_to controller: :static_pages, action: :error404  unless current_user && current_user.admin 
     end

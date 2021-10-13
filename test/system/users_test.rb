@@ -1,6 +1,3 @@
-# Podrías crear un system test que valide que cuando llenas el formulario 
-# de signup, el modelo de usuario quede creado con la información ingresada
-
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase

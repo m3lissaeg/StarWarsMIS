@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authorize_admin
   before_action :set_user, only: %i[ show edit update ]
+  skip_before_action :user_is_admin
 
   def index
     @users = User.all
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   private
 
     def authorize_admin
-      redirect_to controller: :static_pages, action: :error404 unless current_user && current_user.admin 
+      redirect_to missions_url, notice: "401. Unauthorized." unless current_user && current_user.admin 
     end
 
     def set_user
