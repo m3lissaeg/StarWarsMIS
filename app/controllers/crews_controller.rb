@@ -5,15 +5,22 @@ class CrewsController < ApplicationController
 
   # GET /missions/:mission_id/squads/:squads_id/crews or /missions/:mission_id/squads/:squads_id/crews.json
   def index
-    @crews = @squad.crews
+    if @squad.nil?
+      redirect_to controller: :static_pages, action: :error404 
+    else
+      @crews = @squad.crews
+    end
   end
 
   # GET /missions/:mission_id/squads/:squads_id/crews/1 or /missions/:mission_id/squads/:squads_id/crews/1.json
   def show
+    redirect_to controller: :static_pages, action: :error404 unless current_user && 
+    (current_user.admin || @crew.id.in?(@squad.crews.ids) )
   end
 
   # GET /missions/:mission_id/squads/:squads_id/crews/new
   def new
+    puts(@squad.nil?)
     @crew = @squad.crews.build
   end
 
@@ -62,18 +69,26 @@ class CrewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
-      @mission = Mission.find_by(id: params[:mission_id])
-      redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+      if params[:mission_id].to_i.in?(current_user.missions.ids) || current_user.admin?
+        @mission = Mission.find_by(id: params[:mission_id])
+        redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+      end
     end
-
+  
     def set_squad
-      @squad = @mission.squads.find_by(id: params[:squad_id])
-      redirect_to controller: :static_pages, action: :error404 if @squad.nil?
+      if @mission.nil? 
+        redirect_to controller: :static_pages, action: :error404 
+      else
+        @squad = @mission.squads.find_by(id: params[:squad_id])
+      end
     end
-
+    
     def set_crew
-      @crew = @squad.crews.find_by(id: params[:id])
-      redirect_to controller: :static_pages, action: :error404 if @crew.nil?
+      if @squad.nil? 
+        redirect_to controller: :static_pages, action: :error404 if @crew.nil?
+      else
+        @crew = @squad.crews.find_by(id: params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.

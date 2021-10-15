@@ -71,11 +71,11 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should not show squad if user is not admin and squad is not associated with mission" do
-  #   sign_in users(:luke)
-  #   get mission_squad_url(@mission, @squad)
-  #   assert_redirected_to error404_url
-  # end
+  test "should not show squad if user is not admin and squad is not associated with mission" do
+    sign_in users(:luke)
+    get mission_squad_url(@mission, @squad)
+    assert_redirected_to error404_url
+  end
 
   test "should not show squad if user is not logged in" do
     get mission_squad_url(@mission, @squad)

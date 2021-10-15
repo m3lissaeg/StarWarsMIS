@@ -27,45 +27,37 @@ class MissionsController < ApplicationController
 
   # POST /missions or /missions.json
   def create
-    if current_user.admin?
-      @mission = Mission.new(mission_params)
-
-      respond_to do |format|
-        if @mission.save
-          format.html { redirect_to @mission, notice: "Mission was successfully created." }
-          format.json { render :show, status: :created, location: @mission }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @mission.errors, status: :unprocessable_entity }
-        end
+    @mission = Mission.new(mission_params)
+    respond_to do |format|
+      if @mission.save
+        format.html { redirect_to @mission, notice: "Mission was successfully created." }
+        format.json { render :show, status: :created, location: @mission }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @mission.errors, status: :unprocessable_entity }
       end
-
     end
   end
 
   # PATCH/PUT /missions/1 or /missions/1.json
   def update
-    if current_user.admin?
-      respond_to do |format|
-        if @mission.update(mission_params)
-          format.html { redirect_to @mission, notice: "Mission was successfully updated." }
-          format.json { render :show, status: :ok, location: @mission }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @mission.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @mission.update(mission_params)
+        format.html { redirect_to @mission, notice: "Mission was successfully updated." }
+        format.json { render :show, status: :ok, location: @mission }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @mission.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /missions/1 or /missions/1.json
   def destroy
-    if current_user.admin?
-      @mission.destroy
-      respond_to do |format|
-        format.html { redirect_to missions_url, notice: "Mission was successfully destroyed." }
-        format.json { head :no_content }
-      end
+    @mission.destroy
+    respond_to do |format|
+      format.html { redirect_to missions_url, notice: "Mission was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
