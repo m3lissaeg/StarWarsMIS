@@ -27,7 +27,7 @@ class CrewsControllerTest < ActionDispatch::IntegrationTest
   test "should not get new if user is not admin" do
     sign_in users(:luke)
     get new_mission_squad_crew_url(@mission, @squad)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get new if user is not logged in" do
@@ -75,11 +75,11 @@ class CrewsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should not show crew if user is not admin" do
-  #   sign_in users(:luke)
-  #   get mission_squad_crew_url(@mission, @squad, @crew)
-  #   assert_redirected_to error404_url
-  # end
+  test "should not show crew if user is not admin" do
+    sign_in users(:luke)
+    get mission_squad_crew_url(@mission, @squad, @crew)
+    assert_response :missing
+  end
 
   test "should not show crew if user is not logged in" do
     get mission_squad_crew_url(@mission, @squad, @crew)
@@ -95,7 +95,7 @@ class CrewsControllerTest < ActionDispatch::IntegrationTest
   test "should not get edit if user is not admin" do
     sign_in users(:luke)
     get edit_mission_squad_crew_url(@mission, @squad, @crew)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get edit if user is not logged in" do

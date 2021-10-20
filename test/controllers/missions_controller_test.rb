@@ -25,7 +25,7 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   test "should not get new if user is not admin" do
     sign_in users(:luke)
     get new_mission_url
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get new if user is not logged in" do
@@ -87,7 +87,7 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   test "should not show mission if user is not admin and is not associated with mission" do
     sign_in users(:luke)
     get mission_url(@mission)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not show mission if user is not logged in" do
@@ -104,7 +104,7 @@ class MissionsControllerTest < ActionDispatch::IntegrationTest
   test "should not get edit if user is not admin" do
     sign_in users(:luke)
     get edit_mission_url(@mission)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get edit if user is not logged in" do

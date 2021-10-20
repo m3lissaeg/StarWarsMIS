@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authorize_admin
   before_action :set_user, only: %i[ show edit update ]
+  skip_before_action :user_is_admin
 
   def index
     @users = User.all
@@ -46,12 +47,12 @@ class UsersController < ApplicationController
   private
 
     def authorize_admin
-      redirect_to controller: :static_pages, action: :error404 unless current_user && current_user.admin 
+      render "static_pages/error401", status: :unauthorized unless current_user && current_user.admin 
     end
 
     def set_user
       @user = User.find_by(id: params[:id])
-      redirect_to controller: :static_pages, action: :error404 if @user.nil?
+      render "static_pages/error404", status: :not_found if @user.nil?
     end
 
     def user_params
