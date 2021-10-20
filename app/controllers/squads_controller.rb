@@ -5,7 +5,7 @@ class SquadsController < ApplicationController
   # GET /missions/:mission_id/squads or /missions/:mission_id/squads.json
   def index
     if @mission.nil?
-      redirect_to controller: :static_pages, action: :error404 
+      render "static_pages/error404", status: :not_found
     else
       @squads = @mission.squads
     end
@@ -13,7 +13,7 @@ class SquadsController < ApplicationController
 
   # GET /missions/:mission_id/squads/1 or /missions/:mission_id/squads/1.json
   def show
-    redirect_to controller: :static_pages, action: :error404 unless current_user && 
+    render "static_pages/error404", status: :not_found unless current_user && 
     (current_user.admin || @squad.id.in?(@mission.squads.ids) )
   end
 
@@ -67,15 +67,16 @@ class SquadsController < ApplicationController
     def set_mission
       if params[:mission_id].to_i.in?(current_user.missions.ids) || current_user.admin?
         @mission = Mission.find_by(id: params[:mission_id])
-        redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+        render "static_pages/error404", status: :not_found if @mission.nil?
       end
     end
   
     def set_squad
       if @mission.nil? 
-        redirect_to controller: :static_pages, action: :error404 
+        render "static_pages/error404", status: :not_found
       else
         @squad = @mission.squads.find_by(id: params[:id])
+        render "static_pages/error404", status: :not_found unless !@squad.nil?
       end
     end
     

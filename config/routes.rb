@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   root to: "missions#index"
   
   get "/error404", to: "static_pages#error404"
+  get "/error401", to: "static_pages#error401"
 end

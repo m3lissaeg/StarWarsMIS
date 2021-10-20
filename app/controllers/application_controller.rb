@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def user_is_admin
     if !devise_controller?
-      redirect_to controller: :static_pages, action: :error404  unless current_user && current_user.admin 
+      render "static_pages/error404", status: :not_found  unless current_user && current_user.admin 
     end
   end
 

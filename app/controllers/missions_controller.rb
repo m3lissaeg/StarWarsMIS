@@ -12,7 +12,7 @@ class MissionsController < ApplicationController
 
   # GET /missions/1 or /missions/1.json
   def show
-    redirect_to controller: :static_pages, action: :error404 unless current_user && 
+    render "static_pages/error404", status: :not_found unless current_user && 
     (current_user.admin || @mission.commander == current_user )
   end
 
@@ -65,7 +65,7 @@ class MissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
       @mission = Mission.find_by(id: params[:id])
-      redirect_to controller: :static_pages, action: :error404 if @mission.nil?
+      render "static_pages/error404", status: :not_found if @mission.nil?
     end
 
     # Only allow a list of trusted parameters through.

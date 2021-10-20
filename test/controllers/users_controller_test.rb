@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should not get index if not logged in as admin" do
     sign_in users(:luke)
     get users_url
-    assert_redirected_to missions_url, notice: "401. Unauthorized."
+    assert_response 401
   end
 
   test "should get edit if user is admin" do
@@ -31,7 +31,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should not get edit if user is not admin" do
     sign_in users(:luke)
     get edit_user_url(@user)
-    assert_redirected_to missions_url, notice: "401. Unauthorized."
+    assert_response 401
   end
 
   test "should not get edit if user is not logged in" do

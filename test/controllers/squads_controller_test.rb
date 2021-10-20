@@ -26,7 +26,7 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   test "should not get new if user is not admin" do
     sign_in users(:luke)
     get new_mission_squad_url(@mission)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get new if user is not logged in" do
@@ -74,7 +74,7 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   test "should not show squad if user is not admin and squad is not associated with mission" do
     sign_in users(:luke)
     get mission_squad_url(@mission, @squad)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not show squad if user is not logged in" do
@@ -91,7 +91,7 @@ class SquadsControllerTest < ActionDispatch::IntegrationTest
   test "should not get edit if user is not admin" do
     sign_in users(:luke)
     get edit_mission_squad_url(@mission, @squad)
-    assert_redirected_to error404_url
+    assert_response :missing
   end
 
   test "should not get edit if user is not logged in" do

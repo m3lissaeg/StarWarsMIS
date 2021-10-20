@@ -47,12 +47,12 @@ class UsersController < ApplicationController
   private
 
     def authorize_admin
-      redirect_to missions_url, notice: "401. Unauthorized." unless current_user && current_user.admin 
+      render "static_pages/error401", status: :unauthorized unless current_user && current_user.admin 
     end
 
     def set_user
       @user = User.find_by(id: params[:id])
-      redirect_to controller: :static_pages, action: :error404 if @user.nil?
+      render "static_pages/error404", status: :not_found if @user.nil?
     end
 
     def user_params
